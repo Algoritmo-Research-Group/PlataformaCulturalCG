@@ -25,6 +25,7 @@
         </div>
       </q-carousel-slide>
     </q-carousel>
+    <h1>Isto é uma mudança -> branch developer</h1>
   </div>
 </template>
 
