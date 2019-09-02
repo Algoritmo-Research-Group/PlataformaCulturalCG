@@ -7,7 +7,7 @@
       >
         <h1 class="text-white" style="margin-left:">Nossa História</h1>
       </q-parallax>
-      <div class="q-px-lg q-pb-md" style="margin-top: 60px;">
+      <div class="row" style="align-content: center; margin-top: 60px;">
         <q-timeline :layout="layout" color="secondary" style="width:100%;">
           <q-timeline-entry heading class="timeline-item">
             <div class="" style="display: flex; flex-flow: center; flex-direction: column; align-items: center;">
@@ -23,7 +23,7 @@
             class="timeline-item"
           >
             <div>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, Lorem ipsum dolor sit amet, consectetur adipisicing elit, Lorem ipsum dolor sit amet, consectetur adipisicing elit,
             </div>
           </q-timeline-entry>
 
@@ -115,9 +115,9 @@ export default {
     };
   },
   computed: {
-    // layout() {
-    //   return this.$q.screen.lt.sm ? 'dense' : (this.$q.screen.lt.md ? 'comfortable' : 'loose');
-    // },
+    layout() {
+      return (this.$q.screen.lt.sm ? 'dense' : (this.$q.screen.lt.md ? 'comfortable' : 'loose'));
+    },
 
   },
 };
