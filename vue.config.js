@@ -1,5 +1,5 @@
 module.exports = {
-  lintOnSave: false,
+  lintOnSave: true,
 
   pluginOptions: {
     quasar: {
@@ -9,6 +9,6 @@ module.exports = {
   },
 
   transpileDependencies: [
-    /[\\\/]node_modules[\\\/]quasar[\\\/]/,
+    /[\\/]node_modules[\\/]quasar[\\/]/,
   ],
 };

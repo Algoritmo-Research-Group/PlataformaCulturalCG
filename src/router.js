@@ -1,12 +1,14 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import DefaultLayout from './layouts/Default.vue';
-import TestLayout from './layouts/TestLayout';
 import Home from './views/Home.vue';
-import About from './views/About.vue';
+import Posts from './views/Posts.vue';
 import TestView from './views/TestView.vue';
-import Contacts from './views/Contacts.vue';
+import Map from './views/Map.vue';
 import History from './views/History.vue';
+import Paralax from './components/Paralax.vue';
+
+Vue.component('plx', Paralax);
 
 Vue.use(Router);
 
@@ -22,9 +24,9 @@ export default new Router({
           component: Home,
         },
         {
-          path: '/about',
-          name: 'about',
-          component: About,
+          path: '/posts',
+          name: 'posts',
+          component: Posts,
         },
         {
           path: '/test',
@@ -32,9 +34,9 @@ export default new Router({
           component: TestView,
         },
         {
-          path: '/contacts',
-          name: 'contacts',
-          component: Contacts,
+          path: '/map',
+          name: 'map',
+          component: Map,
         },
         {
           path: '/history',
