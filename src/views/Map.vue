@@ -6,7 +6,7 @@
         <h1 class="text-white" style="margin-left:">Mapa Cultural</h1>
     </q-parallax>
     <div class="mapa" style="display: flex; flex-direction: center; aling-content: center; margin-top: 30px;">
-      <GmapMap :center="center" :map-type-id="mapTypeId" :zoom="10">
+      <GmapMap :center="center" :map-type-id="mapTypeId" :zoom="12">
         <GmapMarker
           v-for="(item, index) in markers"
           :key="index"
@@ -16,7 +16,7 @@
       </GmapMap>
     </div>
     <div class="naosei" style="height: 200px; width: 100%;">
-      <h1> olha o mapa cara. funciona </h1>
+        <!-- <h1> olha o mapa cara. funciona </h1> -->
     </div>
   </q-page>
 </template>

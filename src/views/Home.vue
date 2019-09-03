@@ -25,7 +25,7 @@
         </div>
       </q-carousel-slide>
     </q-carousel>
-    <h1>Isto é uma mudança -> branch developer</h1>
+    <!-- <h1>Isto é uma mudança -> branch developer</h1> -->
   </div>
 </template>
 
@@ -40,10 +40,10 @@
 <script>
 export default {
   name: 'PageHome',
-  data () {
+  data() {
     return {
-      slide: 'first'
-    }
-  }
+      slide: 'first',
+    };
+  },
 };
 </script>
