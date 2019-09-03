@@ -32,3 +32,9 @@ npm run test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Execute this project
+Clone this Repository
+In Folder Root install npm (Require npm & vue/cli)
+In the same folder install node modules -> on cmd run: npm install node-modules
+Run on cmd: npm run serve.
