@@ -10,12 +10,12 @@
         </q-toolbar-title>
         <q-tabs v-model="tab" shrink stretch>
           <q-route-tab name="tab1" label="Sobre" to="/about" exact />
-          <q-route-tab name="tab3" label="Contatos" to="/contacts" exact/>
-          <q-route-tab name="tab2" label="História" to="/history" exact/>
+          <q-route-tab name="tab3" label="Profile" to="/profile" exact/>
+          <q-route-tab name="tab2" label="AdmPage" to="/adm" exact/>
         </q-tabs>
       </q-toolbar>
     </q-header>
-  <q-page-container>
+    <q-page-container>
       <router-view />
     </q-page-container>
   </q-layout>
