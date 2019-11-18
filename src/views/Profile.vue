@@ -1,9 +1,6 @@
 <template>
-  <q-page padding>
+  <q-page padding style="width: 100%">
     <div class="column" style="align-content: center;">
-      <div class="perfil-field">
-        </div>
-      </div>
       <div class="row">
         <div class="q-pa-md row items-start q-gutter-md no-wrap" style="width: 100%;">
           <q-card class="perfil-card" style="width: 380px;">
@@ -29,13 +26,13 @@
               </div>
             </q-card-actions>
           </q-card>
-          <q-card class="pin-card" style="min-width: 25%">
+          <q-card class="pin-card" style="min-width: 25%;">
             <q-card-section class="bg-yellow text-black">
               <div class="text-h6">Adicionar Pin</div>
               <div class="text-subtitle2">Faça parte da Cartografia</div>
             </q-card-section>
 
-            <q-card-section class="" v-if="opemBoxPin" style="height: 270px; width: 100%;">
+            <q-card-section class="context" v-if="opemBoxPin" style="height: 270px; width: 100%;">
               <span class="subtitle" style="font-size: 12px; position: relative; top: 10px;"> Este pin te localiza no mapa com os dados inseridos abaixo</span>
               <div class="info-field" v-if="" style="display: flex; flex-direction: row; width: 100%; margin-top: 20px;">
                 <div class="collumn" style="width: 200px;">
@@ -62,6 +59,39 @@
               <q-btn flat v-if="opemBoxPin" @click="opemBoxPin=false">Cancelar</q-btn>
             </q-card-actions>
           </q-card>
+          <q-card class="schedule-card" style="min-width: 30%">
+            <q-card-section class="bg-green text-black">
+              <div class="text-h6">Agenda</div>
+              <div class="text-subtitle2">Crie eventos</div>
+            </q-card-section>
+
+            <q-card-section class="" v-if="openEventBox" style="height: 270px; width: 100%;">
+              <span class="subtitle" style="font-size: 12px; position: relative; top: 10px;"> Este pin te localiza no mapa com os dados inseridos abaixo</span>
+              <div class="info-field" v-if="" style="display: flex; flex-direction: row; width: 100%; margin-top: 20px;">
+                <div class="collumn" style="width: 200px;">
+                  <span class="text-info text-black" style="font-size: 12px; position: relative; top: 10px;">Nome do Pin</span>
+                  <q-input class="input" v-model="text" label="ex: Brava" color="white"/>
+                </div>
+                <div class="collumn" style="width: 300px; margin-left: 20px;">
+                  <span class="text-info text-black" style="font-size: 12px; position: relative; top: 10px;">Email </span>
+                  <q-input class="input" v-model="text" label="ex: fulano@email.com" color="white"/>
+                </div>
+              </div>
+              <div class="info-field" v-if="" style="display: flex; flex-direction: row; width: 100%; margin-top: 20px;">
+                <div class="column" style="width: 250px">
+                  <span class="text-info" style="font-size: 12px; position: relative; top: 10px;">Rua </span>
+                  <q-input class="input" v-model="text" label="ex: Rua do dinar" color="white"/>
+                </div>
+              </div>
+            </q-card-section>
+
+            <q-separator />
+            <q-card-actions align="right" style="background: white">
+              <q-btn flat @click="" v-if="">Ver Agenda</q-btn>
+              <q-btn flat v-if="" @click="">Criar Evento</q-btn>
+            </q-card-actions>
+          </q-card>
+
 
         </div>
 
@@ -119,7 +149,8 @@ export default {
       userEmail: 'JulianaTrujillo@email.com',
       userPassword: '**********',
       opemBoxPin: false,
-      addPin: false
+      addPin: false,
+      openEventBox: false
     };
   },
 };
