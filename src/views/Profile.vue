@@ -2,8 +2,8 @@
   <q-page padding style="width: 100%">
     <div class="column" style="align-content: center;">
       <div class="row">
-        <div class="q-pa-md row items-start q-gutter-md no-wrap" style="width: 100%;">
-          <q-card class="perfil-card" style="width: 380px;">
+        <div class="q-pa-md row items-start q-gutter-md wrap" style="width: 100%;">
+          <q-card class="perfil-card" style="min-widht: 350px;">
             <q-img src="https://cdn.quasar.dev/img/avatar2.jpg" style="height: 300px;">
               <div class="absolute-bottom" align="center">
                 <div class="text-h6">{{userName}}</div>
@@ -26,34 +26,83 @@
               </div>
             </q-card-actions>
           </q-card>
-          <q-card class="pin-card" style="min-width: 25%;">
+          <q-card class="pin-card" style="min-width: 28%;">
             <q-card-section class="bg-yellow text-black">
               <div class="text-h6">Adicionar Pin</div>
               <div class="text-subtitle2">Faça parte da Cartografia</div>
             </q-card-section>
 
-            <q-card-section class="context" v-if="opemBoxPin" style="height: 270px; width: 100%;">
+            <q-card-section class="context" v-if="opemBoxPin" style="height: 100%; width: 100%;">
               <span class="subtitle" style="font-size: 12px; position: relative; top: 10px;"> Este pin te localiza no mapa com os dados inseridos abaixo</span>
-              <div class="info-field" v-if="" style="display: flex; flex-direction: row; width: 100%; margin-top: 20px;">
+              <div class="name-field" v-if="" style="display: flex; flex-direction: row; width: 100%; margin-top: 20px;">
                 <div class="collumn" style="width: 200px;">
                   <span class="text-info text-black" style="font-size: 12px; position: relative; top: 10px;">Nome do Pin</span>
-                  <q-input class="input" v-model="text" label="ex: Brava" color="white"/>
+                  <q-input class="input" v-model="nomePin" label="" color="white"/>
                 </div>
-                <div class="collumn" style="width: 300px; margin-left: 20px;">
+                <div class="collumn" style="width: 300px;">
                   <span class="text-info text-black" style="font-size: 12px; position: relative; top: 10px;">Email </span>
-                  <q-input class="input" v-model="text" label="ex: fulano@email.com" color="white"/>
+                  <q-input class="input" v-model="emailPin" label="" color="white"/>
+                </div>
+                <div class="collumn" style="width: 190px;">
+                  <span class="text-info text-black" style="font-size: 12px; position: relative; top: 10px;">Telefone </span>
+                  <q-input class="input" v-model="telefonePin" color="white"/>
                 </div>
               </div>
-              <div class="info-field" v-if="" style="display: flex; flex-direction: row; width: 100%; margin-top: 20px;">
-                <div class="column" style="width: 250px">
-                  <span class="text-info" style="font-size: 12px; position: relative; top: 10px;">Rua </span>
-                  <q-input class="input" v-model="text" label="ex: Rua do dinar" color="white"/>
+              <div class="address-field" v-if="" style="display: flex; flex-direction: row; width: 100%; margin-top: 20px;">
+                <div class="column" style="width: 300px">
+                  <span class="text-info text-black" style="font-size: 12px; position: relative; top: 10px;">Rua </span>
+                  <q-input class="input" v-model="ruaPin" label="" color="white"/>
+                </div>
+                <div class="column" style="width: 140px">
+                  <span class="text-info text-black" style="font-size: 12px; position: relative; top: 10px;">Número </span>
+                  <q-input class="input" v-model="numeroRuaPin" label="" color="white"/>
+                </div>
+                <div class="column" style="width: 180px">
+                  <span class="text-info text-black" style="font-size: 12px; position: relative; top: 10px;">Cep </span>
+                  <q-input class="input" v-model="cepPin" label="" color="white"/>
+                </div>
+              </div>
+              <div class="description-field" v-if="" style="display: flex; flex-direction: column; width: 100%; margin-top: 20px;">
+                <div class="column" style="">
+                  <div class="row">
+                    <span class="text-info text-black" style="font-size: 12px; position: relative; top: 10px;">Descrição* </span>
+                    <span class="text-info text-black" style="font-size: 10px; position: relative; top: 10px;">(descrição da atividade, até 300 caracteres) </span>
+                  </div>
+                  <q-input outlined type="textarea" class="input" v-model="descricaoPin" color="white" style=" width: 95%;"/>
+                </div>
+                <div class="row">
+                  <div class="column" style="width: 80%">
+                    <div class="column link-pagina">
+                      <div class="row">
+                        <span class="text-info text-black" style="font-size: 12px; position: relative; top: 10px;">Página </span>
+                        <span class="text-info text-black" style="font-size: 10px; position: relative; top: 10px;">(opcional) </span>
+                      </div>
+                      <q-input class="input" v-model="linkPagina" color="white" style=" width: 60%;"/>
+                    </div>
+                    <div class="column link-insta" style="">
+                      <div class="row">
+                        <span class="text-info text-black" style="font-size: 12px; position: relative; top: 10px;">Instagram </span>
+                        <span class="text-info text-black" style="font-size: 10px; position: relative; top: 10px;">(opcional) </span>
+                      </div>
+                      <q-input class="input" v-model="linkInstagram" color="white" style=" width: 60%;"/>
+                    </div>
+                    <div class="column link-facebook" style="">
+                      <div class="row">
+                        <span class="text-info text-black" style="font-size: 12px; position: relative; top: 10px;">Facebook </span>
+                        <span class="text-info text-black" style="font-size: 10px; position: relative; top: 10px;">(opcional) </span>
+                      </div>
+                      <q-input class="input" v-model="linkFacebook" color="white" style=" width: 60%;"/>
+                    </div>
+                  </div>
+                  <div class="q-pa-md q-gutter-sm">
+
+                  </div>
                 </div>
               </div>
             </q-card-section>
 
-            <q-separator />
-            <q-card-actions align="right" style="background: #ff9969">
+            <q-separator style="margin-top: 50px;"/>
+            <q-card-actions  class="absolute-bottom" align="right" style="background: white;">
               <q-btn flat @click="opemBoxPin=true" v-if="opemBoxPin===false">Criar Pin</q-btn>
               <q-btn flat v-if="opemBoxPin" @click="">Finalizar</q-btn>
               <q-btn flat v-if="opemBoxPin" @click="opemBoxPin=false">Cancelar</q-btn>
@@ -65,75 +114,18 @@
               <div class="text-subtitle2">Crie eventos</div>
             </q-card-section>
 
-            <q-card-section class="" v-if="openEventBox" style="height: 270px; width: 100%;">
-              <span class="subtitle" style="font-size: 12px; position: relative; top: 10px;"> Este pin te localiza no mapa com os dados inseridos abaixo</span>
-              <div class="info-field" v-if="" style="display: flex; flex-direction: row; width: 100%; margin-top: 20px;">
-                <div class="collumn" style="width: 200px;">
-                  <span class="text-info text-black" style="font-size: 12px; position: relative; top: 10px;">Nome do Pin</span>
-                  <q-input class="input" v-model="text" label="ex: Brava" color="white"/>
-                </div>
-                <div class="collumn" style="width: 300px; margin-left: 20px;">
-                  <span class="text-info text-black" style="font-size: 12px; position: relative; top: 10px;">Email </span>
-                  <q-input class="input" v-model="text" label="ex: fulano@email.com" color="white"/>
-                </div>
-              </div>
-              <div class="info-field" v-if="" style="display: flex; flex-direction: row; width: 100%; margin-top: 20px;">
-                <div class="column" style="width: 250px">
-                  <span class="text-info" style="font-size: 12px; position: relative; top: 10px;">Rua </span>
-                  <q-input class="input" v-model="text" label="ex: Rua do dinar" color="white"/>
-                </div>
-              </div>
+            <q-card-section class="" v-if="openEventBox" style="width: 80%;">
+
             </q-card-section>
 
             <q-separator />
             <q-card-actions align="right" style="background: white">
-              <q-btn flat @click="" v-if="">Ver Agenda</q-btn>
-              <q-btn flat v-if="" @click="">Criar Evento</q-btn>
+              <q-btn flat @click="opemEventBox=true" v-if="opemEventBox===false">Criar Evento</q-btn>
+              <q-btn flat v-if="opemEventBox" @click="">Adicionar Evento</q-btn>
+              <q-btn flat v-if="opemEventBox" @click="opemEventBox=false">Cancelar</q-btn>
             </q-card-actions>
           </q-card>
-
-
         </div>
-
-        <!--<q-card style="height:400px; width: 400px; background-color: #808080; display: flex; flex-direction: column; align-items: center;
-        margin-top: 90px; margin-left: 30px;">
-            <q-img
-              src="logo.png"
-              style="width: 150px; height: 150px; position: relative; top: -40px;">
-            </q-img>
-            <div class="" style="width: 150px; height: 150px; position: relative; top: -40px; background: yellow;">
-
-            </div>
-            <span class="user-name" style="font-size: 30px; position: relative; top:-30px;"> {{ userName }}</span>
-            <span class="user-category" style=" font-size: 20px; position: relative; top:-25px;"> {{ userCategory }}</span>
-            <div class="" style="display: flex; flex-direction: row; justify-content: space-between">
-              <div class="column">
-                <span class="user-email"> {{ userEmail }} </span>
-                <span class="user-password" style="margin-top: 10px;"> {{ userPassword }} </span>
-              </div>
-              <div class="column" style="">
-                <q-btn outline style="margin-left: 20px;">
-                  <q-icon name="edit" size="20px"></q-icon>
-                </q-btn>
-                <q-btn outline style="margin-left: 20px; margin-top: 10px;">
-                  <q-icon name="edit" size="20px"></q-icon>
-                </q-btn>
-              </div>
-            </div>
-        </q-card>-->
-        <!--<q-card style="width: 400px; background-color: #808080; display: flex; flex-direction: column; align-items: center;
-        margin-top: 0px; margin-left: 30px;">
-          <span class="title" style="font-size: 30px; position: relative; top: 10px;">ADICIONAR PIN</span>
-          <span class="subtitle" style="font-size: 12px; position: relative; top: 10px;"> Este pin te localiza no mapa com os dados inseridos abaixo</span>
-          <div class="hidden-field" v-if="" style="display: flex; flex-direction: column; width: 80%; margin-top: 20px;">
-            <span class="text-info" style="font-size: 12px; position: relative; top: 10px;">Nome do Pin</span>
-            <q-input class="input" v-model="text" label="ex: Brava" color="white"/>
-            <span class="text-info" style="font-size: 12px; position: relative; top: 10px;">Email </span>
-            <q-input class="input" v-model="text" label="ex: fulano@email.com" color="white"/>
-            <span class="text-info" style="font-size: 12px; position: relative; top: 10px;">Rua </span>
-            <q-input class="input" v-model="text" label="ex: Rua do dinar" color="white"/>
-          </div>
-        </q-card>-->
       </div>
     </div>
   </q-page>
@@ -150,7 +142,8 @@ export default {
       userPassword: '**********',
       opemBoxPin: false,
       addPin: false,
-      openEventBox: false
+      opemEventBox: false,
+      addEvent: false
     };
   },
 };
