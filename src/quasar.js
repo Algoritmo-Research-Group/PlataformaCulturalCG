@@ -4,6 +4,7 @@ import './styles/quasar.styl';
 import '@quasar/extras/roboto-font/roboto-font.css';
 import '@quasar/extras/material-icons/material-icons.css';
 import {
+  QSpace,
   Quasar,
   QLayout,
   QHeader,
@@ -39,6 +40,7 @@ import {
 Vue.use(Quasar, {
   config: {},
   components: {
+    QSpace,
     QLayout,
     QHeader,
     QDrawer,

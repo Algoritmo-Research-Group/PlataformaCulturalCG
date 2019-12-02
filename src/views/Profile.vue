@@ -35,7 +35,7 @@
         margin-top: 90px; margin-left: 30px;">
           <span class="title" style="font-size: 30px; position: relative; top: 10px;">ADICIONAR PIN</span>
           <span class="subtitle" style="font-size: 12px; position: relative; top: 10px;"> Este pin te localiza no mapa com os dados inseridos abaixo</span>
-          <div class="hidden-field" v-if="" style="display: flex; flex-direction: column; width: 80%; margin-top: 20px;">
+          <div class="hidden-field" style="display: flex; flex-direction: column; width: 80%; margin-top: 20px;">
             <span class="text-info" style="font-size: 12px; position: relative; top: 10px;">Nome do Pin</span>
             <q-input class="input" v-model="text" label="ex: Brava" color="white"/>
             <span class="text-info" style="font-size: 12px; position: relative; top: 10px;">Email </span>
