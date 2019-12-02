@@ -1,24 +1,32 @@
-<template> 
+<template>
   <div class="body">
     <header>
-    <nav>
-      <h3 id="title" ref="title"> CARTOGRAFIA  DA CULTURA </h3>
-      <span class="subtext" ref="subtext"> CULTURA EM MOVIMENTO</span>
-    </nav>
+      <nav>
+        <h3 id="title" ref="title"> CARTOGRAFIA  DA CULTURA </h3>
+        <div class="row">
+          <span class="forum-text" ref="forum-text">Fórum de Cultura de Campo Grande</span>
+          <span class="subtext" ref="subtext"> CULTURA EM MOVIMENTO</span>
+        </div>
+      </nav>
     <section>
       <div class="img-box" ref="imgbox">
-        <img src="../assets/map.jpg" alt="">
+        <img src="../assets/map.jpg" alt="" style="height: 90%">
         <!-- <map-import></map-import> -->
-        <h1 class="headline">menu here</h1>
+        <ul class="list">
+          <li>Sobre</li>
+          <li>Agenda</li>
+          <li>Login</li>
+        </ul>
       </div>
-    </section>  
-  </header>
-  <div class="slider" ref="slider"></div>
+    </section>
+    </header>
+    <div class="slider" ref="slider"></div>
   </div>
 </template>
 
 <style lang="stylus" scoped>
 @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One|Bowlby+One+SC|Calistoga|Monoton&display=swap');
 *{
   margin: 0;
   padding: 0;
@@ -40,28 +48,49 @@
 
 nav {
   display: grid;
-  grid-template-columns: 10% 2fr 1fr 10%;
+  grid-template-columns: 10% 3fr 1fr 1fr 10%;
   min-height: 15vh;
   color: white;
   align-items: center;
   position: absolute;
   z-index: 3;
-  top: 10%;
+  top: 6%;
 }
 
 #title {
-  font-family: 'Pacifico';
-  font-weight: bold;
-  grid-column: 2/3;
-  font-size: 52px;
+  font-family: 'Calistoga'; //Monotom, Bowlby One, Calistoga, Pacifico, Alfa Slab One.
+  font-weight: normal;
+  grid-column: 2/4;
+  font-size: 62px;
+}
+
+.forum-text {
+  font-family: 'Calistoga';
+  font-weight: normal;
+  font-size: 19px;
+  justify-self: center;
 }
 
 .subtext {
-  font-family: 'Pacifico';
+  font-family: 'Monotom';
   font-weight: normal;
-  font-size: 19px;
+  font-size: 13px;
   justify-self: end;
 }
+
+.list {
+  list-style: none;
+  font-family: 'Monotom';
+  font-weight: normal;
+  position: absolute;
+  top: 60%;
+  left: 10%;
+  font-size: 50px;
+  transform: translate(-20%, -70%);
+  color: white;
+  z-index: 3;
+}
+
 
 .img-box {
   height: 100%;
@@ -86,25 +115,13 @@ nav {
   opacity: 0.1;
 }
 
-.headline {
-  font-family: 'Pacifico';
-  font-weight: normal;
-  position: absolute;
-  top: 60%;
-  left: 10%;
-  font-size: 80px;
-  transform: translate(-20%, -70%);
-  color: white;
-  z-index: 3;
-}
-
 section {
   display: flex;
   height: 100vh;
   justify-content: center;
   align-items: center;
   margin-top: 45px;
-} 
+}
 
 </style>
 
@@ -115,15 +132,15 @@ gsap.registerPlugin( TweenMax, TimelineMax, Power2 );
 
 export default {
   name: 'PageHome',
-  mounted() { 
+  mounted() {
     const { imgbox, slider, title, subtext } = this.$refs;
-    const timeline = new TimelineMax(); 
-    
+    const timeline = new TimelineMax();
+
     timeline.fromTo(imgbox, 1, { height: "0%" }, { height: "80%", ease: Power2.easeInOut })
     .fromTo(imgbox, 1.2, { width: "100%"}, { width: "80%", ease: Power2.easeInOut})
     .fromTo(slider, 1.2, {x: "-100%"}, {x: "0%", ease: Power2.easeInOut}, "-=1.2")
     .fromTo(title, 0.5, { opacity: 0, x: 30 }, { opacity: 1, x: 0 }, "-=0.5")
-    .fromTo(subtext, 0.5, { opacity: 0, x: 30 }, { opacity: 1, x: 0 }, "-=1"); 
-  }  
+    .fromTo(subtext, 0.5, { opacity: 0, x: 30 }, { opacity: 1, x: 0 }, "-=1");
+  }
 };
 </script>
