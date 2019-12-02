@@ -1,31 +1,26 @@
 <template>
-  <q-page padding>
+  <q-page padding style="width: 100%">
     <div class="column" style="align-content: center;">
-      <div class="perfil-field">
-        </div>
-      </div>
       <div class="row">
-        <q-card style="height:400px; width: 400px; background-color: #808080; display: flex; flex-direction: column; align-items: center;
-        margin-top: 90px;">
-            <!--<q-img
-              src="logo.png"
-              style="width: 150px; height: 150px; position: relative; top: -40px;">
-            </q-img>-->
-            <div class="" style="width: 150px; height: 150px; position: relative; top: -40px; background: yellow;">
-
-            </div>
-            <span class="user-name" style="font-size: 30px; position: relative; top:-30px;"> {{ userName }}</span>
-            <span class="user-category" style=" font-size: 20px; position: relative; top:-25px;"> {{ userCategory }}</span>
-            <div class="" style="display: flex; flex-direction: row; justify-content: space-between">
-              <div class="column">
-                <span class="user-email"> {{ userEmail }} </span>
-                <span class="user-password" style="margin-top: 10px;"> {{ userPassword }} </span>
+        <div class="q-pa-md row items-start q-gutter-md wrap" style="width: 100%;">
+          <q-card class="perfil-card" style="min-widht: 350px;">
+            <q-img src="https://cdn.quasar.dev/img/avatar2.jpg" style="height: 300px;">
+              <div class="absolute-bottom" align="center">
+                <div class="text-h6">{{userName}}</div>
+                <div class="text-subtitle2">{{userCategory}}</div>
               </div>
-              <div class="column" style="">
-                <q-btn outline style="margin-left: 20px;">
+            </q-img>
+
+            <q-card-actions class="bg-white" vertical align="right">
+              <div class="row">
+                <span class="user-email" style="margin-top: 15px;"> {{ userEmail }} </span>
+                <q-btn flat style="margin-left: 40px; margin-right: 10px; margin-top: 10px; width: 70px;">
                   <q-icon name="edit" size="20px"></q-icon>
                 </q-btn>
-                <q-btn outline style="margin-left: 20px; margin-top: 10px;">
+              </div>
+              <div class="row" style="">
+                <span class="user-password" style="margin-top: 15px;"> {{ userPassword }} </span>
+                <q-btn flat style="margin-left: 40px; margin-top: 10px; margin-right: 10px; width: 70px;">
                   <q-icon name="edit" size="20px"></q-icon>
                 </q-btn>
               </div>
@@ -58,30 +53,33 @@ export default {
       userCategory: 'Cinema e AudioVisual',
       userEmail: 'JulianaTrujillo@email.com',
       userPassword: '**********',
-      openHiddenPin: false,
+      opemBoxPin: false,
+      addPin: false,
+      opemEventBox: false,
+      addEvent: false
     };
   },
 };
 </script>
-<style lang="stylus" scoped>
-.row {
-  display: flex;
-  flex-direction: row;
-}
-.collumn {
-  display: flex;
-  flex-direction: column;
-  border-radius: 5px;
-}
-.nav {
-  width: 100px;
-  height: 100%;
-  background-color: yellow;
-}
-.text-info {
-  margin: 5px;
-}
-.input {
-  margin: 5px;
-}
+<style lang="sass" scoped>
+.row
+  display: flex
+  flex-direction: row
+
+.collumn
+  display: flex
+  flex-direction: column
+  border-radius: 5px
+
+.nav
+  width: 100px
+  height: 100%
+  background-color: yellow
+
+.text-info
+  margin: 5px
+
+.input
+  margin: 5px
+
 </style>
