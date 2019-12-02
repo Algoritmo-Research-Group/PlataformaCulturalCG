@@ -2,12 +2,13 @@
   <div class="body">
     <header>
     <nav>
-      <h3 id="title"> CARTOGRAFIA </h3>
-      <span class="subtext"> CULTURA EM MOVIMENTO</span>
+      <h3 id="title" ref="title"> CARTOGRAFIA  DA CULTURA </h3>
+      <span class="subtext" ref="subtext"> CULTURA EM MOVIMENTO</span>
     </nav>
     <section>
       <div class="img-box" ref="imgbox">
         <img src="../assets/map.jpg" alt="">
+        <!-- <map-import></map-import> -->
         <h1 class="headline">menu here</h1>
       </div>
     </section>  
@@ -39,20 +40,23 @@
 
 nav {
   display: grid;
-  grid-template-columns: 10% 1fr 1fr 10%;
-  min-height: 10vh;
+  grid-template-columns: 10% 2fr 1fr 10%;
+  min-height: 15vh;
   color: white;
   align-items: center;
+  position: absolute;
+  z-index: 3;
+  top: 10%;
 }
 
 #title {
   font-family: 'Pacifico';
   font-weight: bold;
   grid-column: 2/3;
-  font-size: 32px;
+  font-size: 52px;
 }
 
-subtext {
+.subtext {
   font-family: 'Pacifico';
   font-weight: normal;
   font-size: 19px;
@@ -96,9 +100,10 @@ subtext {
 
 section {
   display: flex;
-  height: 80vh;
+  height: 100vh;
   justify-content: center;
   align-items: center;
+  margin-top: 45px;
 } 
 
 </style>
@@ -111,12 +116,14 @@ gsap.registerPlugin( TweenMax, TimelineMax, Power2 );
 export default {
   name: 'PageHome',
   mounted() { 
-    const { imgbox, slider } = this.$refs;
+    const { imgbox, slider, title, subtext } = this.$refs;
     const timeline = new TimelineMax(); 
     
     timeline.fromTo(imgbox, 1, { height: "0%" }, { height: "80%", ease: Power2.easeInOut })
     .fromTo(imgbox, 1.2, { width: "100%"}, { width: "80%", ease: Power2.easeInOut})
-    .fromTo(slider, 1.2, {x: "-100%"}, {x: "0%", ease: Power2.easeInOut}, "-=1.2"); 
+    .fromTo(slider, 1.2, {x: "-100%"}, {x: "0%", ease: Power2.easeInOut}, "-=1.2")
+    .fromTo(title, 0.5, { opacity: 0, x: 30 }, { opacity: 1, x: 0 }, "-=0.5")
+    .fromTo(subtext, 0.5, { opacity: 0, x: 30 }, { opacity: 1, x: 0 }, "-=1"); 
   }  
 };
 </script>

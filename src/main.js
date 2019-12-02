@@ -1,11 +1,12 @@
 import Vue from 'vue';
 import App from './App.vue';
-import Map from './components/Map.vue';
 import router from './router';
 import store from './store';
 import './quasar';
+import Map from './components/Map.vue';
 
-Vue.component('map', Map);
+
+Vue.component('map-import', Map);
 Vue.config.productionTip = false;
 
 
