@@ -5,6 +5,8 @@ import Home from './views/Home.vue';
 import About from './views/About.vue';
 import Profile from './views/Profile.vue';
 import Adm from './views/AdmPage.vue';
+import Register from './views/Register.vue';
+import Recover from './views/Recover.vue';
 
 Vue.use(Router);
 
@@ -33,6 +35,16 @@ export default new Router({
           path: '/adm',
           name: 'adm',
           component: Adm,
+        },
+        {
+          path: '/Register',
+          name: 'register',
+          component: Register,
+        },
+        {
+          path: '/recover',
+          name: 'recover',
+          component: Recover,
         },
       ],
     },
