@@ -5,6 +5,7 @@ import '@quasar/extras/roboto-font/roboto-font.css';
 import '@quasar/extras/material-icons/material-icons.css';
 import {
   Quasar,
+  QExpansionItem,
   QEditor,
   QCard,
   QCardSection,
@@ -43,9 +44,14 @@ import {
 } from 'quasar';
 
 Vue.use(Quasar, {
-  config: {},
+  config: {
+    extras: [
+      'fontawesome-v5',
+    ]
+  },
   components: {
     QLayout,
+    QExpansionItem,
     QCard,
     QCardSection,
     QCardActions,

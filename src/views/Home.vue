@@ -4,7 +4,7 @@
       <nav>
         <h3 id="title" ref="title"> CARTOGRAFIA  DA CULTURA </h3>
         <div class="row">
-          <span class="forum-text" ref="forum-text">Fórum de Cultura de Campo Grande</span>
+          <span class="forum-text" ref="ftext">Fórum de Cultura de Campo Grande</span>
           <span class="subtext" ref="subtext"> CULTURA EM MOVIMENTO</span>
         </div>
       </nav>
@@ -12,11 +12,34 @@
       <div class="img-box" ref="imgbox">
         <img src="../assets/map.jpg" alt="" style="height: 90%">
         <!-- <map-import></map-import> -->
-        <ul class="list">
-          <li>Sobre</li>
-          <li>Agenda</li>
-          <li>Login</li>
-        </ul>
+        <q-list class="list rounded-borders" ref="list">
+          <q-expansion-item class="menu" ref="menu" popup style="min-width: 200px;">
+            <template v-slot:header>
+              <q-item-section class="btn" ref="btn">
+                <span class="title-menu">SOBRE</span>
+              </q-item-section>
+            </template>
+            <q-separator />
+            <q-card class="card">
+              <q-card-section>
+                <div class="column">
+                  <router-link class="link" to="/About">A PLATAFORMA</router-link>
+                  <a class="link" href=""> O FÓRUM </a>
+                  <router-link class="link" to="/Terms" style="">NOSSOS TERMOS</router-link>
+                  <router-link class="link" to="/Faq">FAQ</router-link>
+                  <div class="row">
+                    <q-btn flat round type="a" target="_blank" href="https://www.facebook.com/AlgoRitmo.ufms/">
+                      <q-icon name="fab fa-facebook-square" style="color: #1e90ff"></q-icon>
+                    </q-btn>
+                    <q-btn flat round  type="a" target="_blank" href="https://www.instagram.com/algo.ritmo_/">
+                      <q-icon name="fab fa-instagram" href="https://www.instagram.com/algo.ritmo_/" style="color: #E1306C"></q-icon>
+                    </q-btn>
+                  </div>
+                </div>
+              </q-card-section>
+            </q-card>
+          </q-expansion-item>
+        </q-list>
       </div>
     </section>
     </header>
@@ -78,20 +101,6 @@ nav {
   justify-self: end;
 }
 
-.list {
-  list-style: none;
-  font-family: 'Monotom';
-  font-weight: normal;
-  position: absolute;
-  top: 60%;
-  left: 10%;
-  font-size: 50px;
-  transform: translate(-20%, -70%);
-  color: white;
-  z-index: 3;
-}
-
-
 .img-box {
   height: 100%;
   widht: 100%;
@@ -122,6 +131,43 @@ section {
   align-items: center;
   margin-top: 45px;
 }
+// css menu -------------------------------
+.list {
+  list-style: none;
+  font-family: 'Monotom';
+  font-weight: normal;
+  position: absolute;
+  top: 60%;
+  left: 10%;
+  font-size: 50px;
+  transform: translate(-20%, -70%);
+  color: white;
+  z-index: 3;
+}
+
+.title-menu
+  font-size: 23px
+  font-family: 'Calistoga'
+  font-weight: normal
+
+.menu
+  font-family: 'Fredoka One';
+  font-weight: normal;
+  min-width: 150px;
+
+.card
+  background: none;
+  border: none;
+
+.link
+  text-decoration: none;
+  font-family: 'Calistoga';
+  font-weight: normal;
+  font-size: 18px;
+  color: white;
+
+.link:hover
+  color: orange;
 
 </style>
 
@@ -133,14 +179,19 @@ gsap.registerPlugin( TweenMax, TimelineMax, Power2 );
 export default {
   name: 'PageHome',
   mounted() {
-    const { imgbox, slider, title, subtext } = this.$refs;
+    const { imgbox, slider, title, ftext, subtext, list } = this.$refs;
     const timeline = new TimelineMax();
 
     timeline.fromTo(imgbox, 1, { height: "0%" }, { height: "80%", ease: Power2.easeInOut })
     .fromTo(imgbox, 1.2, { width: "100%"}, { width: "80%", ease: Power2.easeInOut})
     .fromTo(slider, 1.2, {x: "-100%"}, {x: "0%", ease: Power2.easeInOut}, "-=1.2")
     .fromTo(title, 0.5, { opacity: 0, x: 30 }, { opacity: 1, x: 0 }, "-=0.5")
-    .fromTo(subtext, 0.5, { opacity: 0, x: 30 }, { opacity: 1, x: 0 }, "-=1");
+    .fromTo(list, 0.5, { opacity: 0, x: 0 }, { opacity: 1, x: 30 }, "-=0.5")
+    .fromTo(subtext, 1.1, { opacity: 0, x: 30 }, { opacity: 1, x: 0 }, "-=1")
+    .fromTo(ftext, 0.5, { opacity: 0, x: 30 }, { opacity: 1, x: 0 }, "-=1");
+  },
+  methods() {
+
   }
 };
 </script>
