@@ -5,6 +5,11 @@ import '@quasar/extras/roboto-font/roboto-font.css';
 import '@quasar/extras/material-icons/material-icons.css';
 import {
   Quasar,
+  QDialog,
+  ClosePopup,
+  QBtnToggle,
+  QTable,
+  QAvatar,
   QExpansionItem,
   QEditor,
   QCard,
@@ -41,6 +46,7 @@ import {
   QCarousel,
   QCarouselControl,
   QCarouselSlide,
+  QUploader,
 } from 'quasar';
 
 Vue.use(Quasar, {
@@ -50,6 +56,11 @@ Vue.use(Quasar, {
     ]
   },
   components: {
+    QDialog,
+    QUploader,
+    QBtnToggle,
+    QTable,
+    QAvatar,
     QLayout,
     QExpansionItem,
     QCard,
@@ -90,6 +101,7 @@ Vue.use(Quasar, {
     QCarouselSlide,
   },
   directives: {
+    ClosePopup
   },
   plugins: {
   },

@@ -10,6 +10,7 @@
           <q-route-tab name="tab2" label="AdmPage" to="/adm" exact/>
           <q-route-tab name="tab4" label="Cadastro" to="/register" exact/>
           <q-route-tab name="tab5" label="RecuperarSenha" to="/recover" exact/>
+          <q-route-tab name="tab6" label="SignIn" to="/signIn" exact />
         </q-tabs>
       </q-toolbar>
     </q-header>

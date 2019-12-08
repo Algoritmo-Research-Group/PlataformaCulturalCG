@@ -11,6 +11,8 @@
   "dependencies": {
     "@fortawesome/vue-fontawesome": "^0.1.8",
     "@quasar/extras": "^1.0.0",
+    "aws-amplify": "^2.2.0",
+    "aws-amplify-vue": "^1.1.1",
     "core-js": "^2.6.5",
     "gsap": "^3.0.1",
     "leaflet": "^1.6.0",

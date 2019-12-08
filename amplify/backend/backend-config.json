@@ -1,0 +1,9 @@
+{
+	"auth": {
+		"plataformaculturalcg40334a89": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	}
+}

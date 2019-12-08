@@ -7,6 +7,9 @@ import Profile from './views/Profile.vue';
 import Adm from './views/AdmPage.vue';
 import Register from './views/Register.vue';
 import Recover from './views/Recover.vue';
+import SignIn from './views/SignIn.vue';
+import Debates from './views/Debates.vue';
+import Schedule from './views/Schedule.vue';
 
 Vue.use(Router);
 
@@ -27,6 +30,11 @@ export default new Router({
           component: About,
         },
         {
+          path: '/signIn',
+          name: 'signIn',
+          component: SignIn,
+        },
+        {
           path: '/profile',
           name: 'profile',
           component: Profile,
@@ -45,6 +53,16 @@ export default new Router({
           path: '/recover',
           name: 'recover',
           component: Recover,
+        },
+        {
+          path: '/debates',
+          name: 'debates',
+          component: Debates,
+        },
+        {
+          path: '/schedule',
+          name: 'schedule',
+          component: Schedule,
         },
       ],
     },
