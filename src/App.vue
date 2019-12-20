@@ -23,12 +23,39 @@ export default {
   display: flex
   flex-direction: row
 
+.justify-center
+  display: flex
+  justify-content: center
+
 .row-space-around
   display: flex
   flex-direction: row
   justify-content: space-around
 
-// padding -----------------------------
+// position ----------------------------- position
+.top10
+  position: absolute
+  top: 10%
+
+.top15
+  position: absolute
+  top: 15%
+
+.top20
+  position: absolute
+  top: 20%
+
+// margin ------------------------------ margin
+.margin-top8
+  margin-top: 8px
+
+.margin-top16
+  margin-top: 16px
+
+.margin-top32
+  margin-top: 32px
+
+// padding ----------------------------- padding
 .padding-8
   padding: 8px
 

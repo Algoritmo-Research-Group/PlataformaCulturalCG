@@ -1,6 +1,7 @@
 <template>
   <div class="body">
     <div class="overlay" ref="overlay">
+      <img class="imgPresentation" src="../assets/esboco.png" alt="">
       <h1 class="presentation" ref="presentation">CULTURA</h1>
     </div>
     <div class="wrapper">
@@ -122,15 +123,33 @@ export default {
     background: #fff
     top: 0%
 
+.overlay img
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
 .overlay h1
-    position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-    font-size: 25px
-    font-weight: bolder
-    letter-spacing: 14px
-    color: black
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  width: 100%
+  text-align: center
+  color: black
+  font-size: 30px
+  font-weight: 900
+  letter-spacing: 14px
+  text-transform: uppercase
+  // font-size: 3.25rem
+  // font-weight: 900
+  // padding: 0.5em 1em
+  // color: #1d1e22
+  // background-color: #f4f4f4
+  // mix-blend-mode: screen
+  // border-radius: 0.2em
+  // pointer-events: none
+  // user-select: none
 
 .wrapper
   background: url('../assets/unsplash02.jpg') no-repeat 50% 50%
