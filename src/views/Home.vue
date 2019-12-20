@@ -1,73 +1,100 @@
 <template>
   <div class="body">
-    <header>
-      <nav>
-        <h3 id="title" ref="title"> CARTOGRAFIA  DA CULTURA </h3>
-        <div class="row">
-          <span class="forum-text" ref="ftext">Fórum de Cultura de Campo Grande</span>
-          <span class="subtext" ref="subtext"> CULTURA EM MOVIMENTO</span>
-        </div>
-      </nav>
-    <section>
-      <div class="img-box" ref="imgbox">
-        <img src="../assets/map.jpg" alt="" style="height: 90%">
-        <!-- <map-import></map-import> -->
-        <q-list class="list rounded-borders" ref="list">
-          <q-expansion-item class="menu" ref="menu" popup style="min-width: 150px;">
-            <template v-slot:header>
-              <q-item-section class="btn" ref="btn">
-                <span class="title-menu">SOBRE</span>
-              </q-item-section>
-            </template>
-            <q-separator />
-            <q-card class="card">
-              <q-card-section>
-                <div class="column">
-                  <router-link class="link" to="/About">A PLATAFORMA</router-link>
-                  <a class="link" href=""> O FÓRUM </a>
-                  <router-link class="link" to="/Terms" style="">NOSSOS TERMOS</router-link>
-                  <router-link class="link" to="/Faq">FAQ</router-link>
-                  <div class="row">
-                    <q-btn flat round type="a" target="_blank" href="https://www.facebook.com/AlgoRitmo.ufms/">
-                      <q-icon name="fab fa-facebook-square" style="color: #1e90ff"></q-icon>
-                    </q-btn>
-                    <q-btn flat round  type="a" target="_blank" href="https://www.instagram.com/algo.ritmo_/">
-                      <q-icon name="fab fa-instagram" href="https://www.instagram.com/algo.ritmo_/" style="color: #E1306C"></q-icon>
-                    </q-btn>
-                  </div>
-                </div>
-              </q-card-section>
-            </q-card>
-          </q-expansion-item>
-          <router-link class="link" ref="menu" to="/signIn" exact>
-            <span>LOGIN</span>
-          </router-link>
-        </q-list>
+    <div class="overlay" ref="overlay">
+      <h1 class="presentation" ref="presentation">CULTURA</h1>
+    </div>
+    <div class="wrapper">
+      <div class="title">
+        <h1 ref="title">cartografia da cultura</h1>
       </div>
-    </section>
-    </header>
+      <div class="menu">
+        <ul>
+          <li ref="mC1">
+            <router-link class="link" ref="menu" to="/about" exact>
+              <span class="menu-text">SOBRE</span>
+            </router-link>
+          </li>
+          <li ref="mC2">
+            <router-link class="link" ref="menu" to="/schedule" exact>
+              <span class="menu-text">AGENDA</span>
+            </router-link>
+          </li>
+          <li ref="mC3">
+            <router-link class="link" ref="menu" to="/signIn" exact>
+              <span class="menu-text">LOGIN</span>
+            </router-link>
+          </li>
+        </ul>
+      </div>
+      <div class="map-container">
+        <map-import class="map" ref="map">
+        </map-import>
+      </div>
+      <div class="social-media">
+        <ul>
+          <li ref="smIcon1">
+            <q-btn flat round type="a" target="_blank" href="https://www.facebook.com/AlgoRitmo.ufms/">
+              <q-icon name="fab fa-facebook-square"></q-icon>
+            </q-btn>
+          </li>
+          <li ref="smIcon2">
+            <q-btn flat round  type="a" target="_blank" href="https://www.instagram.com/algo.ritmo_/">
+              <q-icon name="fab fa-instagram" href="https://www.instagram.com/algo.ritmo_/"></q-icon>
+            </q-btn>
+          </li>
+        </ul>
+      </div>
+    </div>
     <div class="slider" ref="slider"></div>
   </div>
 </template>
 
 <script>
 import gsap from 'gsap/all';
-import { TweenMax, TimelineMax, Power2 } from 'gsap/all';
-gsap.registerPlugin( TweenMax, TimelineMax, Power2 );
+import { TweenMax, Expo } from 'gsap/all';
+gsap.registerPlugin( TweenMax, Expo );
 
 export default {
   name: 'PageHome',
   mounted() {
-    const { imgbox, slider, title, ftext, subtext, list } = this.$refs;
-    const timeline = new TimelineMax();
+    const { overlay, presentation, title, smIcon1, smIcon2, mC1, mC2, mC3 } = this.$refs;
 
-    timeline.fromTo(imgbox, 1, { height: "0%" }, { height: "80%", ease: Power2.easeInOut })
-    .fromTo(imgbox, 1.2, { width: "100%"}, { width: "80%", ease: Power2.easeInOut})
-    .fromTo(slider, 1.2, {x: "-100%"}, {x: "0%", ease: Power2.easeInOut}, "-=1.2")
-    .fromTo(title, 0.5, { opacity: 0, x: 30 }, { opacity: 1, x: 0 }, "-=0.5")
-    .fromTo(list, 0.5, { opacity: 0, x: 0 }, { opacity: 1, x: 30 }, "-=0.5")
-    .fromTo(subtext, 1.1, { opacity: 0, x: 30 }, { opacity: 1, x: 0 }, "-=1")
-    .fromTo(ftext, 0.5, { opacity: 0, x: 30 }, { opacity: 1, x: 0 }, "-=1");
+    TweenMax.to(presentation, 2, {
+          opacity: 0,
+          y: -60,
+          ease: Expo.easeInOut
+    });
+
+    TweenMax.to(overlay, 2, {
+          delay: 1,
+          top: "-100%",
+          ease: Expo.easeInOut
+    });
+
+    TweenMax.staggerFrom(title, 2, {
+          delay: 2.4, opacity: 0, y: 20, ease: Expo.easeInOut
+    }, 0.2);
+
+    TweenMax.staggerFrom(mC1, 2, {
+          delay: 3.4, opacity: 0, y: 20, ease: Expo.easeInOut
+    }, 0.2);
+
+    TweenMax.staggerFrom(mC2, 2, {
+          delay: 3.6, opacity: 0, y: 20, ease: Expo.easeInOut
+    }, 0.2);
+
+    TweenMax.staggerFrom(mC3, 2, {
+          delay: 3.8, opacity: 0, y: 20, ease: Expo.easeInOut
+    }, 0.2);
+
+    TweenMax.staggerFrom(smIcon1, 2, {
+          delay: 3.5, opacity: 0, y: 50, ease: Expo.easeInOut
+    }, 0.2);
+
+    TweenMax.staggerFrom(smIcon2, 2.2, {
+          delay: 3.7, opacity: 0, y: 50, ease: Expo.easeInOut
+    }, 0.2);
+
   },
   methods() {
 
@@ -76,119 +103,88 @@ export default {
 </script>
 
 <style lang="sass">
-@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap')
-@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One|Bowlby+One+SC|Calistoga|Monoton&display=swap')
 
 *
   margin: 0
   padding: 0
   box-sizing: border-box
 
-
-.slider
-  position: absolute
-  top: 0
-  left: 0
+.body
   width: 100%
   height: 100%
-  background: lightblue
-  z-index: -1
-  background: linear-gradient(to left, #ba7453, #d1a984)
-  align-items: center
+  font-family: 'Poppins !important'
 
-nav
-  display: grid
-  grid-template-columns: 10% 3fr 1fr 1fr 10%
-  min-height: 15vh
-  color: white
-  align-items: center
-  position: absolute
-  z-index: 3
-  top: 6%
+.overlay
+    z-index: 1
+    position: absolute
+    width: 100%
+    height: 100vh
+    background: #fff
+    top: 0%
 
+.overlay h1
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    font-size: 25px
+    font-weight: bolder
+    letter-spacing: 14px
+    color: black
 
-#title
-  font-family: 'Calistoga'; //Monotom, Bowlby One, Calistoga, Pacifico, Alfa Slab One.
-  font-weight: normal
-  grid-column: 2/4
-  font-size: 62px
-
-
-.forum-text
-  font-family: 'Calistoga'
-  font-weight: normal
-  font-size: 19px
-  justify-self: center
-
-
-.subtext
-  font-family: 'Monotom'
-  font-weight: normal
-  font-size: 13px
-  justify-self: end
-
-
-.img-box
-  height: 100%
-  widht: 100%
-
-.img-box img
-  width: 100%
-  height: 70%
-  object-fit: cover
-  position: relative
-
-
-.img-box::after
-  content: ""
-  background: black
-  width: 100%
-  height: 100%
-  position: absolute
-  left: 0
-  top: 0
-  opacity: 0.1
-
-
-section
-  display: flex
+.wrapper
+  background: url('../assets/unsplash02.jpg') no-repeat 50% 50%
+  background-size: cover
   height: 100vh
-  justify-content: center
-  align-items: center
-  margin-top: 45px
 
-// css menu -------------------------------
-.list
-  list-style: none
-  font-family: 'Monotom'
-  font-weight: normal
+.map-container
   position: absolute
-  top: 60%
-  left: 10%
-  font-size: 50px
-  transform: translate(-20%, -70%)
-  color: white
-  z-index: 3
+  top: 55%
+  left: 50%
+  transform: translate(-50%, -50%)
+  height: 600px
+  width: 1200px
+  overflow: hidden
 
-.title-menu
-  font-size: 23px
-  font-family: 'Calistoga'
-  font-weight: normal
+.title
+  position: absolute
+  top: 20px
+  left: 50% !important
+  transform: translateX(-50%)
+
+.title h1
+  font-family: 'Poppins !important'
+  font-weight: bold
+  font-size: 45px
+  letter-spacing: 8px
+  color: white
+  text-transform: uppercase
 
 .menu
-  font-family: 'Fredoka One'
-  font-weight: normal
-  min-width: 150px
+  position: absolute
+  top: 50%
+  left: 30px
+  z-index: 1
+  transform: translateY(-50%)
+  font-size: 22px
+  font-weight: bold
 
-.card
-  background: none
-  border: none
+.menu ul li
+  list-style: none
+  color: #fff
+  padding-top: 20px
+  letter-spacing: 8px
 
-.link
-  text-decoration: none
-  font-family: 'Calistoga'
-  font-weight: normal
-  font-size: 18px
-  color: white
+.social-media
+      position: absolute
+      right: 100px
+      bottom: 3%
+
+.social-media ul li
+      list-style: none
+      display: inline-block
+      color: #fff
+      padding-top: 20px
+
 
 </style>

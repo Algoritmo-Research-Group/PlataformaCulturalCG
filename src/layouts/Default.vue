@@ -1,10 +1,10 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated class="bg-black text-white shadow-2 rounded-borders">
+    <q-header elevated class="bg-black text-white shadow-2 rounded-borders"style="height: 0px;">
       <q-toolbar>
         <q-btn flat label="Homepage" to="/" exact/>
         <q-space />
-        <q-tabs v-model="tab" shrink stretch>
+        <q-tabs v-model="tab" stretch>
           <q-route-tab name="tab1" label="Sobre" to="/about" exact />
           <q-route-tab name="tab3" label="Profile" to="/profile" exact/>
           <q-route-tab name="tab2" label="AdmPage" to="/adm" exact/>

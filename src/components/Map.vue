@@ -6,7 +6,7 @@
       <span>Bounds: {{ bounds }}</span>
     </div>-->
     <l-map ref="MyAwesomeMap"
-      style="height: 100%; width: 100%"
+      style="width: 100%, height: 100%"
       :zoom="zoom"
       :center="center"
       :options="{zoomControl: false}"
@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-      zoom: 15,
+      zoom: 12,
       center: [-20.460277, -54.612277],
       markerLatLng: [-20.460277, -54.612277],
       bounds: null,
