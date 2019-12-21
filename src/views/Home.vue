@@ -11,18 +11,18 @@
       <div class="menu">
         <ul>
           <li ref="mC1">
-            <router-link class="link" ref="menu" to="/about" exact>
-              <span class="menu-text">SOBRE</span>
+            <router-link ref="menu" to="/about" exact>
+              <span class="link-menu">SOBRE</span>
             </router-link>
           </li>
           <li ref="mC2">
-            <router-link class="link" ref="menu" to="/schedule" exact>
-              <span class="menu-text">AGENDA</span>
+            <router-link ref="menu" to="/schedule" exact>
+              <span class="link-menu">AGENDA</span>
             </router-link>
           </li>
           <li ref="mC3">
-            <router-link class="link" ref="menu" to="/signIn" exact>
-              <span class="menu-text">LOGIN</span>
+            <router-link ref="menu" to="/signIn" exact>
+              <span class="link-menu">LOGIN</span>
             </router-link>
           </li>
         </ul>
@@ -205,5 +205,11 @@ export default {
       color: #fff
       padding-top: 20px
 
+.link-menu
+  text-decoration: none
+  color: white
+
+.link-menu:hover
+  color: white
 
 </style>

@@ -4,6 +4,7 @@ import './styles/quasar.styl';
 import '@quasar/extras/roboto-font/roboto-font.css';
 import '@quasar/extras/material-icons/material-icons.css';
 import {
+  QSelect,
   QTooltip,
   QChip,
   Quasar,
@@ -49,6 +50,7 @@ import {
   QCarouselControl,
   QCarouselSlide,
   QUploader,
+  QToggle,
 } from 'quasar';
 
 Vue.use(Quasar, {
@@ -58,6 +60,8 @@ Vue.use(Quasar, {
     ]
   },
   components: {
+    QToggle,
+    QSelect,
     QDialog,
     QChip,
     QTooltip,

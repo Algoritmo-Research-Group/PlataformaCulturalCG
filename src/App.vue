@@ -27,6 +27,10 @@ export default {
   display: flex
   justify-content: center
 
+.align-center
+  display: flex
+  align-items: center
+
 .row-space-around
   display: flex
   flex-direction: row
