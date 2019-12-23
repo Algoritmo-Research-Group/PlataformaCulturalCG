@@ -11,10 +11,10 @@
           <h2 class="ttl">Seja Bem Vindo!</h2>
           <q-input outlined v-model="userEmail" :rules="emailRules" label="login"  color="black" required
             style="font-size: 18px"/>
-          <q-input outlined v-model="password" label="senha" :type="isPwd ? 'password' : 'text'" color="black" style="font-size: 18px">
+          <q-input outlined v-model="userPassword" label="senha" :type="isPwd ? 'password' : 'text'" hint="Mínimo de 8 caracteres" color="black" style="font-size: 18px">
             <template v-slot:append>
               <q-icon
-                :name="isPwd ? 'visibility_off' : 'visibility'"
+                :name=" isPwd ? 'visibility_off' : 'visibility'"
                 size="20px"
                 class="cursor-pointer"
                 @click="isPwd = !isPwd"
@@ -24,7 +24,7 @@
           <div class="btn-field column">
             <router-link class="link" to="/Recover">Esqueceu sua conta?</router-link>
             <router-link class="link" to="/Register">Cadastre-se</router-link>
-            <q-btn filled color="black" :disabled="!valid" @click="submit()" text-color="white"
+            <q-btn filled color="black" :disabled="!valid" @click="signIn()" text-color="white"
               style="align-self: center; width: 150px; height: 50px; margin-top: 16px;">
               <span style="font-family: 'Calistoga'; font-weight: 400">LOGAR</span>
             </q-btn>
@@ -36,17 +36,35 @@
 </template>
 
 <script>
+import { Auth } from 'aws-amplify';
+import { AmplifyEventBus } from 'aws-amplify-vue';
+
 export default {
-  name: 'SignUpPage',
+  name: 'SignInPage',
   data() {
     return {
       valid: false,
       userEmail: '',
-      password: '',
+      userPassword: '',
+      isPwd: false,
       passwordVisible: false,
     }
   },
+  created() {
+    this.findUser();
+
+    AmplifyEventBus.$on('authState', info =>  {
+      if(info === "signedIn") {
+        this.findUser();
+      } else {
+        this.$store.state.signedIn = false;
+      }
+    })
+  },
   computed: {
+    signedIn() {
+      return this.$store.state.signedIn;
+    },
     emailRules() {
       return [
         v => !!v || 'E-mail é requerido',
@@ -62,13 +80,35 @@ export default {
     }
   },
   methods: {
-    submit() {
-      if (this.$refs.form.validate()) {
-        console.log(`SIGN UP username: ${this.username}, password: ${this.password}, email: ${this.username}`);
+      async findUser() {
+        try {
+          const user = await Auth.currentAuthenticatedUser();
+          this.$store.state.signedIn = true;
+          this.$store.state.user = user;
+          console.log(user);
+        } catch(err) {
+          this.$store.state.signedIn = false;
+          this.$store.state.user = null;
+        }
+      },
+      signIn() {
+        Auth.signIn(this.userEmail, this.userPassword)
+          .then(user => {
+            this.$store.state.signedIn = !!user;
+            this.$store.state.user = user;
+          })
+          .catch(err => console.log(err));
+          console.log('error no login')
+      },
+      signOut() {
+        Auth.signOut()
+        .then(data =>{
+          this.$store.state.signedIn = !!data;
+        })
+        . catch(err => console.log(err));
       }
-    },
-  },
-};
+  }
+}
 </script>
 
 <style lang="sass">
@@ -95,6 +135,7 @@ export default {
 
 .btn-field
   margin: 16px
+  margin-left: 8px
 
 .link
   text-decoration: none

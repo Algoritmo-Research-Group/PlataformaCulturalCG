@@ -10,17 +10,18 @@
         <span class="ttl">Cadastre-se:</span>
         <div class="context">
           <p class="p">O cadastro permitirá: </br>
-            MAPA: </br>
-            Adicionar um pin no mapa (sua localização e as informações que você inserir serão visto por todos). Cada cadastro permitirá que você insira um pin.</br>
-          AGENDA:</br>
-          Inserir na agenda os eventos que você irá participar ou produzir em Campo Grande Além de ser mais um local de divulgação do seu trabalho,
-          o visitante ao acessar a plataforma, poderá visualizar os eventos que acontecerão nos próximos dias, reunidos num só lugar.</br>
-          DIÁLOGO:</br>
-          Propor debates ou participar de um debate que acontece online, proposto pelo Fórum Municipal de Cultura ou pelos participantes,
-          entre a produtores artísticos e culturais da cidade.</br>
-          Para o Fórum Municipal de Cultura é muito importante que você, sendo da classe artística, produtor cultural, instituição ou responsável
-          por estabelecimento que promove arte e cultura na cidade, participe desta plataforma. A cartografia da cultura é uma maneira de dar voz e visibilidade
-          A todos que produzem arte e cultura, sem hierarquias e com transparência.</p>
+            <strong>Mapa:</strong> Adicionar um pin no mapa (sua localização e as informações que você inserir serão visto por todos). Cada cadastro permitirá que você insira um pin.
+            <br>
+            <strong>Agenda:</strong> Inserir na agenda os eventos que você irá participar ou produzir em Campo Grande Além de ser mais um local de divulgação do seu trabalho,
+            o visitante ao acessar a plataforma, poderá visualizar os eventos que acontecerão nos próximos dias, reunidos num só lugar.
+            <br>
+            <strong>Diálogo:</strong> Propor debates ou participar de um debate que acontece online, proposto pelo Fórum Municipal de Cultura ou pelos participantes,
+            entre a produtores artísticos e culturais da cidade.
+            <br>
+            Para o Fórum Municipal de Cultura é muito importante que você, sendo da classe artística, produtor cultural, instituição ou responsável
+            por estabelecimento que promove arte e cultura na cidade, participe desta plataforma. A cartografia da cultura é uma maneira de dar voz e visibilidade
+            A todos que produzem arte e cultura, sem hierarquias e com transparência.
+          </p>
         </div>
       </div>
       <div class="col-r">

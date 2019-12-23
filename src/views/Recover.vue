@@ -25,7 +25,7 @@
             <q-btn outlined color="black" text-color="white" label="Pesquisar" style="width: 130px; height: 30px; margin-left: 16px; "/>
           </div>
           <q-stepper-navigation>
-            <q-btn outline @click="step = 2" color="black" label="Continue" style="width: 150px"/>
+            <q-btn filled @click="step = 2" color="black" label="Continue" style="width: 150px"/>
           </q-stepper-navigation>
         </q-step>
 
@@ -66,8 +66,8 @@
             </q-list>
           </div>
           <q-stepper-navigation>
-            <q-btn outline @click="step = 3" color="black" label="Continue" style="width: 150px"/>
-            <q-btn outlined @click="step = 1" color="black" label="Voltar" style="margin-left: 16px"/>
+            <q-btn filled @click="step = 3" color="black" label="Continue" style="width: 150px"/>
+            <q-btn outline @click="step = 1" color="black" label="Voltar" style="margin-left: 16px; width: 110px"/>
           </q-stepper-navigation>
         </q-step>
 
@@ -88,8 +88,8 @@
             </div>
           </div>
           <q-stepper-navigation>
-            <q-btn outline @click="step = 4" color="black" label="Continue" style="width: 150px"/>
-            <q-btn outlined @click="step = 2" color="black" label="Voltar" style="margin-left: 16px" />
+            <q-btn filled @click="step = 4" color="black" label="Continue" style="width: 150px"/>
+            <q-btn outline @click="step = 2" color="black" label="Voltar" style="margin-left: 16px; width: 110px" />
           </q-stepper-navigation>
         </q-step>
 
@@ -105,10 +105,10 @@
             <q-input outlined v-model="userNewPassword" label="confirme sua senha"  color="black" style="margin: 10px; width: 280px;"/>
           </div>
           <q-stepper-navigation>
+            <q-btn outlined color="black" label="Finalizar" style="margin-right: 16px; width: 150px"/>
             <!-- finaliza e volta para a landing para logar -->
-            <q-btn outline @click="step = 3" color="black" label="Cancelar" />
+            <q-btn outline @click="step = 3" color="black" label="Voltar" style="width: 110px"/>
             <!-- colocar algo para identificar o match das senhas -->
-            <q-btn outlined color="black" label="Finalizar" style="margin-left: 16px; width: 150px"/>
           </q-stepper-navigation>
         </q-step>
       </q-stepper>

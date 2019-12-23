@@ -6,8 +6,7 @@ import store from './store';
 import Amplify, * as AmplifyModules from 'aws-amplify';
 import { AmplifyPlugin } from 'aws-amplify-vue';
 import awsconfig from './aws-exports';
-// Amplify.configure(awsconfig);
-
+Amplify.configure(awsconfig);
 import { AmplifyEventBus } from 'aws-amplify-vue';
 AmplifyEventBus.$on('authState', info => {
   console.log(`Here is the auth event that was just emitted by an Amplify component: ${info}`)

@@ -170,6 +170,7 @@ export default {
   top: 20px
   left: 50% !important
   transform: translateX(-50%)
+  // z-index: 1
 
 .title h1
   font-family: 'Poppins !important'
@@ -195,18 +196,18 @@ export default {
   letter-spacing: 8px
 
 .social-media
-      position: absolute
-      right: 100px
-      bottom: 3%
+    position: absolute
+    right: 100px
+    bottom: 3%
 
 .social-media ul li
-      list-style: none
-      display: inline-block
-      color: #fff
-      padding-top: 20px
+    list-style: none
+    display: inline-block
+    color: #fff
+    padding-top: 20px
 
 .link-menu
-  text-decoration: none
+  text-decoration: none !important
   color: white
 
 .link-menu:hover
