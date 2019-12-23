@@ -9,6 +9,7 @@
       <q-card class="card" v-model="valid" lazy-validation>
         <q-card-section>
           <h2 class="ttl">Seja Bem Vindo!</h2>
+          <span v-if="signedIn()">logou</span>
           <q-input outlined v-model="userEmail" :rules="emailRules" label="login"  color="black" required
             style="font-size: 18px"/>
           <q-input outlined v-model="userPassword" label="senha" :type="isPwd ? 'password' : 'text'" hint="Mínimo de 8 caracteres" color="black" style="font-size: 18px">
@@ -58,6 +59,7 @@ export default {
         this.findUser();
       } else {
         this.$store.state.signedIn = false;
+        this.$store.state.user = null;
       }
     })
   },

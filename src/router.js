@@ -13,7 +13,9 @@ import Schedule from './views/Schedule.vue';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
+  mode: 'history',
+  base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
@@ -35,16 +37,6 @@ export default new Router({
           component: SignIn,
         },
         {
-          path: '/profile',
-          name: 'profile',
-          component: Profile,
-        },
-        {
-          path: '/adm',
-          name: 'adm',
-          component: Adm,
-        },
-        {
           path: '/Register',
           name: 'register',
           component: Register,
@@ -55,16 +47,55 @@ export default new Router({
           component: Recover,
         },
         {
+          path: '/profile',
+          name: 'profile',
+          component: Profile,
+          meta: { requiresAuth: true}
+        },
+        {
+          path: '/adm',
+          name: 'adm',
+          component: Adm,
+          meta: { requiresAuth: true}
+        },
+        {
           path: '/debates',
           name: 'debates',
           component: Debates,
+          meta: { requiresAuth: true}
         },
         {
           path: '/schedule',
           name: 'schedule',
           component: Schedule,
+          meta: { requiresAuth: true}
         },
       ],
     },
   ],
 });
+
+router.beforeResolve((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    let user;
+    Vue.prototype.$Amplify.Auth.currentAuthenticatedUser().then((data) => {
+      if (data && data.signInUserSession) {
+        user = data;
+      next()
+      }
+    }).catch((e) => {
+      console.log(e)
+    });
+    if (!user) {
+      next({path:'/'});
+    }else {
+      next()
+    }
+  } else {
+  next()
+  }
+})
+
+
+
+export default router;
