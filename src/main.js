@@ -1,8 +1,29 @@
 import Vue from 'vue';
 import App from './App.vue';
 import './quasar';
+
 import router from './router';
 import store from './store';
+
+import {
+  LMap, LTileLayer, LMarker, LControlZoom,
+} from 'vue2-leaflet';
+import { Icon } from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+
+Vue.component('l-map', LMap);
+Vue.component('l-tile-layer', LTileLayer);
+Vue.component('l-marker', LMarker);
+Vue.component('l-control-zoom', LControlZoom);
+
+delete Icon.Default.prototype._getIconUrl;
+
+Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+});
+
 import Amplify, * as AmplifyModules from 'aws-amplify';
 import { AmplifyPlugin } from 'aws-amplify-vue';
 import awsconfig from './aws-exports';
@@ -13,6 +34,8 @@ AmplifyEventBus.$on('authState', info => {
 });
 
 import Map from './components/Map.vue';
+import M from './components/MTeste.vue';
+Vue.component('m-test', M);
 
 Vue.use(AmplifyPlugin, AmplifyModules);
 Vue.component('map-import', Map);

@@ -1,15 +1,17 @@
 <template>
   <div class="body justify-center align-center">
-    <q-btn outline to="/" color="white" text-color="white" style="width: 200px; margin-left: 15px;
-      margin-bottom: 20px; position: absolute; top: 10%; left: 5%;">
-      <q-icon name="keyboard_arrow_left" style=""></q-icon>
-      <span>Voltar ao Mapa</span>
+    <q-btn class="outline" filled to="/" text-color="white" style="background-color: transparent; width: 60px; min-height: 150px;
+     position: absolute; top: 64px; left: 62px; border: 2px solid white; border-radius: 20px; padding: 10px; z-index: 1;">
+      <div class="column space-around" style="height: 100%;">
+        <q-icon name="keyboard_arrow_left"></q-icon>
+        <span style="writing-mode: vertical-rl; text-orientation: upright; font-size: 18px; font-weight: 800">Mapa</span>
+      </div>
     </q-btn>
     <div class="q-pa-md">
       <q-card class="card" v-model="valid" lazy-validation>
         <q-card-section>
           <h2 class="ttl">Seja Bem Vindo!</h2>
-          <span v-if="signedIn()">logou</span>
+          <span> this.$store.state.user </span>
           <q-input outlined v-model="userEmail" :rules="emailRules" label="login"  color="black" required
             style="font-size: 18px"/>
           <q-input outlined v-model="userPassword" label="senha" :type="isPwd ? 'password' : 'text'" hint="Mínimo de 8 caracteres" color="black" style="font-size: 18px">

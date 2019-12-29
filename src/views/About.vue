@@ -2,6 +2,13 @@
   <q-page>
     <div class="body">
       <div class="smooth">
+        <q-btn class="outline" filled to="/" text-color="white" style="background-color: transparent; width: 60px; min-height: 150px;
+         position: absolute; top: 64px; left: 62px; border: 2px solid white; border-radius: 20px; padding: 10px; z-index: 1;">
+          <div class="column space-around" style="height: 100%;">
+            <q-icon name="keyboard_arrow_left"></q-icon>
+            <span style="writing-mode: vertical-rl; text-orientation: upright; font-size: 18px; font-weight: 800">Mapa</span>
+          </div>
+        </q-btn>
         <div class="header">
           <ul>
             <li><a href="#plt">SOBRE NÓS</a></li>

@@ -15,6 +15,9 @@ export default {
 </script>
 
 <style lang="sass">
+.body
+  box-sizing: border-box
+
 .column
   display: flex
   flex-direction: column
@@ -30,6 +33,9 @@ export default {
 .align-center
   display: flex
   align-items: center
+
+.space-around
+  justify-content: space-around
 
 .row-space-around
   display: flex
@@ -89,6 +95,16 @@ export default {
 
 .padding-right-16
   padding-right: 16px
+
+// styles components
+
+.outline
+  border: 2px solid white
+
+.outline:hover
+  transform: scale(1.03)
+  transition: all 0.3s ease-in-out
+  background-color: none !important
 
 
 

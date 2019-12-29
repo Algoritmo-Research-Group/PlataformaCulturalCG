@@ -15,6 +15,11 @@
               <span class="link-menu">SOBRE</span>
             </router-link>
           </li>
+          <li ref="mC1">
+            <router-link ref="menu" to="/profile" exact>
+              <span class="link-menu">PERFIL</span>
+            </router-link>
+          </li>
           <li ref="mC2">
             <router-link ref="menu" to="/schedule" exact>
               <span class="link-menu">AGENDA</span>
@@ -26,10 +31,6 @@
             </router-link>
           </li>
         </ul>
-      </div>
-      <div class="map-container">
-        <map-import class="map" ref="map">
-        </map-import>
       </div>
       <div class="social-media">
         <ul>
@@ -46,7 +47,18 @@
         </ul>
       </div>
     </div>
-    <div class="slider" ref="slider"></div>
+    <div class="map-container">
+      <l-map
+        style="width: 100%, height: 90vh"
+        :zoom="zoom"
+        :minZoom="1"
+        :center="center"
+      >
+        <l-tile-layer
+          :url="url"
+        ></l-tile-layer>
+      </l-map>
+    </div>
   </div>
 </template>
 
@@ -57,6 +69,16 @@ gsap.registerPlugin( TweenMax, Expo );
 
 export default {
   name: 'PageHome',
+  data() {
+    return {
+      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+      zoom: 14,
+      center: [-20.460277, -54.612277],
+      markerLatLng: [-20.460277, -54.612277],
+      bounds: null,
+      attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    }
+  },
   mounted() {
     const { overlay, presentation, title, smIcon1, smIcon2, mC1, mC2, mC3 } = this.$refs;
 
@@ -97,26 +119,24 @@ export default {
     }, 0.2);
 
   },
-  methods() {
+  methods: {
 
   }
 };
 </script>
 
 <style lang="sass">
-
 *
   margin: 0
   padding: 0
   box-sizing: border-box
 
 .body
-  width: 100%
-  height: 100%
+  position: relative
   font-family: 'Poppins !important'
 
 .overlay
-    z-index: 1
+    z-index: 2
     position: absolute
     width: 100%
     height: 100vh
@@ -152,25 +172,26 @@ export default {
   // user-select: none
 
 .wrapper
-  background: url('../assets/unsplash02.jpg') no-repeat 50% 50%
-  background-size: cover
+  // background: url('../assets/unsplash02.jpg') no-repeat 50% 50%
+  // background-size: cover
   height: 100vh
 
 .map-container
   position: absolute
-  top: 55%
-  left: 50%
-  transform: translate(-50%, -50%)
-  height: 600px
-  width: 1200px
-  overflow: hidden
+  z-index: 0
+  top: 50px
+  // left: 50%
+  // transform: translate(-50%, -50%)
+  height: 100%
+  width: 100%
+  // overflow: hidden
 
 .title
   position: absolute
   top: 20px
   left: 50% !important
   transform: translateX(-50%)
-  // z-index: 1
+  z-index: 1
 
 .title h1
   font-family: 'Poppins !important'
