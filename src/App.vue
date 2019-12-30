@@ -15,8 +15,10 @@ export default {
 </script>
 
 <style lang="sass">
-.body
+
+.body, .content
   box-sizing: border-box
+  height: 100vh
 
 .column
   display: flex

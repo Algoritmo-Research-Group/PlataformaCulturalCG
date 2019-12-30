@@ -1,20 +1,22 @@
 <template>
-  <div class="body justify-center align-center">
-    <q-btn class="outline" filled to="/" text-color="white" style="background-color: transparent; width: 60px; min-height: 150px;
-     position: absolute; top: 64px; left: 62px; border: 2px solid white; border-radius: 20px; padding: 10px; z-index: 1;">
-      <div class="column space-around" style="height: 100%;">
-        <q-icon name="keyboard_arrow_left"></q-icon>
-        <span style="writing-mode: vertical-rl; text-orientation: upright; font-size: 18px; font-weight: 800">Mapa</span>
-      </div>
+  <div class="content justify-center align-center">
+    <q-btn to="/" style="position: absolute; top: 10px; left: 0px; z-index: 1; width: 9rem; height: 3.5rem; border-radius: 0px;
+      background-color: black; box-shadow: none;">
+      <div class="row" style="justify-content: center; align-items: center;">
+        <q-icon name="keyboard_arrow_left" class="text-white"></q-icon>
+        <span style="font-size: 15px; font-weight: 800; color: white">Mapa</span>
+      </div> 
     </q-btn>
     <div class="context q-pa-md">
       <q-stepper
-        class="q-stepper"
         v-model="step"
         vertical
         flat
         animated
-        inactive-color
+        dark
+        class="bg-grey-10"
+        active-color="deep-orange"
+        done-color="secondary"
       >
         <q-step class="step1"
           :name="1"
@@ -142,10 +144,11 @@ export default {
   padding: 0
   box-sizing: border-box
 
-.body
+.content
   width: 100%
   height: 100vh
   font-family: 'Poppins !important'
+  background-image: url(../assets/yellow01.jpg) !important
 
 .q-stepper
   min-height: 200px

@@ -1,450 +1,281 @@
 <template>
-  <q-page style="width: 100%; height: 100vh;">
-    <!-- <q-btn flat to="/" color="white" text-color="white" style="margin-top: 10px; margin-left: 15px; margin-bottom: 20px">
-        <q-icon name="keyboard_arrow_left" style=""></q-icon>
-        <span>Voltar ao Mapa</span>
-    </q-btn> -->
-    <div class="content">
-      <div class="info">
-        <div class="perfil">
-          <q-avatar size="110px">
-            <img src="https://cdn.quasar.dev/img/boy-avatar.png">
-          </q-avatar>
-          <div class="perfil-info">
-            <div class="perfil-name">{{userName}}</div>
-            <div class="perfil-category">{{userCategory}}</div>
-          </div>
-          <q-btn class="button-logout">
-            <q-icon name="logout" class="text-black" size="30px"></q-icon>
-            <q-tooltip content-class="" :content-style="{color: '#FFFFFF'}" anchor="bottom middle" transition-show="scale"
-              transition-hide="scale" :offset="[10, 10]">
-              <strong>SAIR</strong>
-            </q-tooltip>
-          </q-btn>
-        </div>
-        <div class="perfil-data">
-          <div class="column">
-            <span class="user-email"> {{ userEmail }} </span>
-            <span class="user-password" style=""> {{ userPassword }} </span>
-          </div>
-          <q-btn class="button-edit-perfil-data">
-            <q-icon name="keyboard_arrow_right" class="text-white" size="25px"></q-icon>
-          </q-btn>
-        </div>
-      </div>
-      <div class="actions">
-        <div class="options">
-          <q-btn class="buttons-action" flat @click="opemBoxPin=true, opemBoxEvent=false" align="left" size="20px">
-            <q-icon left name="person_pin" color="white" style="margin-left: 16px;"/>
-            <span style="color: white; margin-left: 16px; font-family: 'Calistoga'">MEU PIN</span>
-          </q-btn>
-          <q-btn  class="buttons-action" flat @click="opemBoxEvent=true, opemBoxPin=false" align="left" size="20px">
-            <q-icon left name="calendar_today" color="white" style="margin-left: 16px;"/>
-            <span style="color: white; margin-left: 16px; font-family: 'Calistoga'">EVENTOS</span>
-          </q-btn>
-        </div>
-        <div class="nav row">
-          <q-btn outline to="/schedule" color="white" text-color="white" style="width: 60px; min-height: 150px;
-           position: absolute; top: 10%; left: 62px; border-radius: 20px; padding: 10px">
-            <div class="column space-around" style="height: 100%;">
-              <q-icon name="keyboard_arrow_left"></q-icon>
-              <span style="writing-mode: vertical-rl; text-orientation: upright; font-size: 18px; font-weight: 800">Mapa</span>
-            </div>
-          </q-btn>
-          <q-btn class="buttons-nav" icon="keyboard_arrow_left"  text-color="white" size="20px"  to="/schedule">
-            <span style="color: white">AGENDA</span>
-          </q-btn>
-          <q-btn class="buttons-nav" icon-right="keyboard_arrow_right" text-color="white" size="20px"  to="/debates">
-            <span style="color:white">DEBATES</span>
-          </q-btn>
-        </div>
-      </div>
-      <div class="context">
-        <q-card class="card">
-          <div class="fieldPin" v-if="opemBoxPin" style="max-width: 80%; max-height: 100%;">
-            <q-card class="pin-card">
-              <q-card-section class="bg-white text-black">
-                <div class="text-h6">Faça parte da Cartografia</div>
-              </q-card-section>
-
-              <q-card-section class="context" style="height: 100%; width: 100%;">
-                <span class="subtitle" style="font-size: 12px; position: relative; top: 10px;"> Este pin te localiza no mapa com os dados inseridos abaixo</span>
-                <div class="name-field"  style="display: flex; flex-direction: row; width: 100%; margin-top: 20px;">
-                  <div class="collumn" style="width: 200px;">
-                    <span class="input-info text-black" style="font-size: 12px; position: relative; top: 10px;">Nome do Pin</span>
-                    <q-input class="input" v-model="nomePin" label="" color="white"/>
-                  </div>
-                  <div class="collumn" style="min-width: 250px;">
-                    <span class="input-info text-black" style="font-size: 12px; position: relative; top: 10px;">Email </span>
-                    <q-input class="input" v-model="emailPin" label="" color="white"/>
-                  </div>
-                  <div class="collumn" style="width: 190px;">
-                    <span class="input-info text-black" style="font-size: 12px; position: relative; top: 10px;">Telefone </span>
-                    <q-input class="input" v-model="telefonePin" color="white"/>
-                  </div>
-                </div>
-                <div class="address-field"  style="display: flex; flex-direction: row; width: 100%; margin-top: 20px;">
-                  <div class="column" style="width: 300px">
-                    <span class="input-info text-black" style="font-size: 12px; position: relative; top: 10px;">Rua </span>
-                    <q-input class="input" v-model="ruaPin" label="" color="white"/>
-                  </div>
-                  <div class="column" style="width: 140px">
-                    <span class="input-info text-black" style="font-size: 12px; position: relative; top: 10px;">Número </span>
-                    <q-input class="input" v-model="numeroRuaPin" label="" color="white"/>
-                  </div>
-                  <div class="column" style="width: 180px">
-                    <span class="input-info text-black" style="font-size: 12px; position: relative; top: 10px;">Cep </span>
-                    <q-input class="input" v-model="cepPin" label="" color="white"/>
-                  </div>
-                </div>
-                <div class="description-field" style="display: flex; flex-direction: column; width: 100%; margin-top: 20px;">
-                  <div class="column" style="">
-                    <div class="row">
-                      <span class="input-info text-black" style="font-size: 12px; position: relative; top: 10px;">Descrição* </span>
-                      <span class="input-info text-black" style="font-size: 10px; position: relative; top: 10px;">(descrição da atividade, até 300 caracteres) </span>
-                    </div>
-                    <q-input outlined type="textarea" class="input" v-model="descricaoPin" color="white" style=" width: 95%;"/>
-                  </div>
-                  <div class="row">
-                    <div class="column" style="width: 80%">
-                      <div class="column link-pagina">
-                        <div class="row">
-                          <span class="input-info text-black" style="font-size: 12px; position: relative; top: 10px;">Página </span>
-                          <span class="input-info text-black" style="font-size: 10px; position: relative; top: 10px;">(opcional) </span>
-                        </div>
-                        <q-input class="input" v-model="linkPagina" color="white" style=" width: 60%;"/>
-                      </div>
-                      <div class="column link-insta" style="">
-                        <div class="row">
-                          <span class="input-info text-black" style="font-size: 12px; position: relative; top: 10px;">Instagram </span>
-                          <span class="input-info text-black" style="font-size: 10px; position: relative; top: 10px;">(opcional) </span>
-                        </div>
-                        <q-input class="input" v-model="linkInstagram" color="white" style=" width: 60%;"/>
-                      </div>
-                      <div class="column link-facebook" style="">
-                        <div class="row">
-                          <span class="input-info text-black" style="font-size: 12px; position: relative; top: 10px;">Facebook </span>
-                          <span class="input-info text-black" style="font-size: 10px; position: relative; top: 10px;">(opcional) </span>
-                        </div>
-                        <q-input class="input" v-model="linkFacebook" color="white" style=" width: 60%;"/>
-                      </div>
-                    </div>
-                    <div class="q-pa-md q-gutter-sm">
-
-                    </div>
-                  </div>
-                </div>
-              </q-card-section>
-
-              <q-separator style="margin-top: 50px;"/>
-              <q-card-actions  class="absolute-bottom" align="right" style="background: white; margin: 10px">
-                <q-btn flat @click="opemBoxPin=true" v-if="opemBoxPin===false">Criar Pin</q-btn>
-                <q-btn filled color="black" v-if="opemBoxPin" >Finalizar</q-btn>
-                <q-btn flat v-if="opemBoxPin" @click="opemBoxPin=false">Cancelar</q-btn>
-              </q-card-actions>
-            </q-card>
-          </div>
-          <div class="fieldEvent" v-if="opemBoxEvent">
-            <q-card>
-              <q-card-section class="bg-white text-black">
-                <div class="text-h6">Crie seu novo evento</div>
-              </q-card-section>
-              <q-card-section class="body-card">
-                <div class="row">
-                  <div class="collumn" style="width: 50%;">
-                    <span class="input-info text-black" style="font-size: 14px; position: relative; top: 10px;">Nome do Evento</span>
-                    <q-input class="input" v-model="nomeEvento" label="" color="white"/>
-                  </div>
-                  <div class="collumn" style="width: 50%">
-                    <span class="input-info text-black" style="font-size: 14px; position: relative; top: 10px;">Local do Evento</span>
-                    <q-input class="input" v-model="localEvento" label="" color="white"/>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="collumn">
-                    <span class="input-info text-black" style="font-size: 14px; position: relative; top: 10px;">Data</span>
-                    <q-input class="input" v-model="dataEvento" label="" color="white"/>
-                  </div>
-                  <div class="collumn" style="width: 150px;">
-                    <span class="input-info text-black" style="font-size: 14px; position: relative; top: 10px;">Horário</span>
-                    <q-input class="input" v-model="localEvento" label="" color="white"/>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="collumn">
-                    <span class="input-info text-black" style="font-size: 14px; position: relative; top: 10px;">Link do Evento</span>
-                    <q-input class="input" v-model="localEvento" label="" color="white"/>
-                  </div>
-                  <div class="collumn">
-                    <span class="input-info text-black" style="font-size: 14px; position: relative; top: 10px;">Valor Entrada</span>
-                    <q-input class="input" v-model="dataEvento" label="" color="white"/>
-                  </div>
-                </div>
-              </q-card-section>
-
-              <q-separator />
-              <q-card-actions align="right" style="background: white; ">
-                <q-btn filled color="black" v-if="">Adicionar Evento</q-btn>
-              </q-card-actions>
-            </q-card>
-            <div class="table">
-              <q-table
-                card-class="bg-white"
-                title="Meus Eventos"
-                :data="data"
-                :columns="columns"
-                row-key="name"
-                :filter="filter"
-                hide-header
-                style=""
-              >
-                <template v-slot:top-right>
-                  <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
-                    <template v-slot:append>
-                      <q-icon name="search" />
-                    </template>
-                  </q-input>
-                </template>
-              </q-table>
-            </div>
-          </div>
-        </q-card>
-      </div>
-      <!-- <div class="btnEvent">
-        <q-btn class="q-px-xl q-py-xs" @click="opemBoxPinEvent=true" color="teal" label="EVENTO" size="20px" style="border-radius: 25px; margin-right: 8px; margin-top: 8px">
-        </q-btn>
-      </div> -->
+  <div class="body">
+    <div class="overlay" ref="overlay">
+      <img class="imgPresentation" src="../assets/esboco.png" alt="">
+      <h1 class="presentation" ref="presentation">CULTURA</h1>
     </div>
-  </q-page>
+    <div class="wrapper">
+      <div class="title">
+        <h1 ref="title">cartografia da cultura</h1>
+      </div>
+      <div class="menu">
+        <ul>
+          <li ref="mC1">
+            <router-link ref="menu" to="/about" exact>
+              <span class="link-menu">SOBRE</span>
+            </router-link>
+          </li>
+          <!-- <li ref="mC2">
+            <router-link ref="menu" to="/profile" exact>
+              <span class="link-menu">PERFIL</span>
+            </router-link>
+          </li> -->
+          <li ref="mC2">
+            <router-link ref="menu" to="/schedule" exact>
+              <span class="link-menu">AGENDA</span>
+            </router-link>
+          </li>
+          <li ref="mC3">
+            <router-link ref="menu" to="/signIn" exact>
+              <span class="link-menu">LOGIN</span>
+            </router-link>
+          </li>
+        </ul>
+      </div>
+      <div class="social-media">
+        <ul>
+          <li ref="smIcon1">
+            <q-btn flat round type="a" target="_blank" href="https://www.facebook.com/AlgoRitmo.ufms/">
+              <q-icon size="35px" name="fab fa-facebook-square"></q-icon>
+            </q-btn>
+          </li>
+          <li ref="smIcon2">
+            <q-btn flat round  type="a" target="_blank" href="https://www.instagram.com/algo.ritmo_/">
+              <q-icon size="35px" name="fab fa-instagram" href="https://www.instagram.com/algo.ritmo_/"></q-icon>
+            </q-btn>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="map-container">
+      <l-map
+        style="width: 100%, height: 100vh"
+        :zoom="zoom"
+        :center="center"
+        :options="{zoomControl: false}"
+        @update:zoom="zoomUpdated"
+        @update:center="centerUpdated"
+        @update:bounds="boundsUpdated"
+      >
+        <l-tile-layer
+          :url="url"
+        ></l-tile-layer>
+        <l-control-zoom position="topright"  ></l-control-zoom>
+        <l-marker :lat-lng="markerLatLng">
+          <l-popup>
+            <div class="column align-center">
+              <span>Au au</span>
+              <q-avatar class="imgfq" size="60px">
+                <img src="../assets/avatar01.jpg">
+              </q-avatar>
+            </div>
+          </l-popup>
+        </l-marker>
+        <l-control-attribution position="topleft" prefix="Algo+Ritmo - Research Group" />
+      </l-map>
+    </div>
+  </div>
 </template>
 
 <script>
+import * as Vue2Leaflet from 'vue2-leaflet';
+import {
+  LMap, LTileLayer, LMarker, LControlZoom, LPopup
+} from 'vue2-leaflet';
+
+
+import gsap from 'gsap/all';
+import { TweenMax, Expo } from 'gsap/all';
+gsap.registerPlugin( TweenMax, Expo );
+
 export default {
-  name: 'Profile',
+  name: 'PageHome',
+  components: {
+    LMap,
+    LTileLayer,
+    LMarker,
+    LControlZoom,
+    LPopup,
+  },
   data() {
     return {
-      userName: 'Juliana Trujillo',
-      userCategory: 'Cinema e AudioVisual',
-      userEmail: 'JulianaTrujillo@email.com',
-      userPassword: 'senha legal',
-      opemBoxPin: false,
-      addPin: false,
-      opemBoxEvent: false,
-      addEvent: false,
-      nomeEvento: '',
-      localEvento: '',
-      dataEvento: '',
-      filter: '',
-      columns: [
-        {
-          name: 'desc',
-          required: true,
-          label: '',
-          align: 'center',
-          field: row => row.name,
-          format: val => `${val}`,
-          sortable: true
-        },
-        { name: 'eventName', align: 'left', label: '', field: 'eventName', sortable: true },
-        { name: 'eventDate', label: '', field: 'enventDate', sortable: true }
-      ],
-      data: [
-        {
-          name: 'Foto Evento',
-          eventName: 'Evento 1',
-          eventDate: '12/01/2020'
-        },
-        {
-          name: 'Foto evento 2',
-          eventName: 'Evento 2',
-          eventDate: '12/01/2020'
-        },
-        {
-          name: 'Foto evento 3',
-          eventName: 'Evento 3',
-          eventDate: '12/01/2020'
-        },
-        {
-          name: 'Foto evento 4',
-          eventName: 'Evento 4',
-          eventDate: '12/01/2020'
-        },
-        {
-          name: 'Foto evento 5',
-          eventName: 'Evento 5',
-          eventDate: '12/01/2020'
-        }
-      ],
-    };
+      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+      zoom: 15,
+      center: [-20.460277, -54.612277],
+      markerLatLng: [-20.460277, -54.612277],
+      bounds: null,
+      attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    }
+  },
+  mounted() {
+    const { overlay, presentation, title, smIcon1, smIcon2, mC1, mC2, mC3 } = this.$refs;
+
+    TweenMax.to(presentation, 2, {
+          opacity: 0,
+          y: -60,
+          ease: Expo.easeInOut
+    });
+
+    TweenMax.to(overlay, 2, {
+          delay: 1,
+          top: "-100%",
+          ease: Expo.easeInOut
+    });
+
+    TweenMax.staggerFrom(title, 2, {
+          delay: 2.4, opacity: 0, y: 20, ease: Expo.easeInOut
+    }, 0.2);
+
+    TweenMax.staggerFrom(mC1, 2, {
+          delay: 3.4, opacity: 0, y: 20, ease: Expo.easeInOut
+    }, 0.2);
+
+    TweenMax.staggerFrom(mC2, 2, {
+          delay: 3.6, opacity: 0, y: 20, ease: Expo.easeInOut
+    }, 0.2);
+
+    TweenMax.staggerFrom(mC3, 2, {
+          delay: 3.8, opacity: 0, y: 20, ease: Expo.easeInOut
+    }, 0.2);
+
+    TweenMax.staggerFrom(smIcon1, 2, {
+          delay: 3.5, opacity: 0, y: 50, ease: Expo.easeInOut
+    }, 0.2);
+
+    TweenMax.staggerFrom(smIcon2, 2.2, {
+          delay: 3.7, opacity: 0, y: 50, ease: Expo.easeInOut
+    }, 0.2);
+
+  },
+  methods: {
+    zoomUpdated(zoom) {
+      this.zoom = zoom;
+    },
+    centerUpdated(center) {
+      this.center = center;
+    },
+    boundsUpdated(bounds) {
+      this.bounds = bounds;
+    },
   },
 };
 </script>
-<style lang="scss" scoped>
 
-.content {
-  box-sizing: border-box;
-  height: 100vh;
-  padding: 16px;
-  background-image: url("../assets/unsplash01.jpg");
-}
+<style lang="sass">
 
-// div1 ------- info do usuario -------- div1
-.info {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 16px;
-  position: absolute;
-  top: 100px;
-  left: 128px;
-}
+@import url('https://fonts.googleapis.com/css?family=Monoton|Righteous&display=swap');
 
-// Perfil components -------------------
-.perfil {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
 
-.perfil-info {
-  overflow: visible;
-  padding: 10px;
-  text-align: center;
-  height: 100px;
-  min-width: 250px;
-  // border: 2px solid;
-  // border-color: #EDEDED;
-  // border-radius: 15px;
-}
+.body
+  position: relative
+  font-family: 'Poppins !important'
 
-.perfil-data {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 60px;
-  border: 2px solid;
-  border-color: #00C7C7;
-  border-radius: 20px;
-  padding: 16px;
-}
+.overlay
+    z-index: 2
+    position: absolute
+    width: 100%
+    height: 100vh
+    background: #fff
+    top: 0%
 
-.button-edit-perfil-data
-{
-  height: 100%;
-  margin-left: 16px;
-  background-color: #00C7C7;
-  border-radius: 20px;
-  height: 80px;
-}
+.overlay img
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
 
-.button-logout {
-  background-color: #EDEDED;
-  height: 100px;
-  margin-left: 16px;
-  border-radius: 20px;
-}
+.overlay h1
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  width: 100%
+  text-align: center
+  color: black
+  font-size: 30px
+  font-weight: 900
+  letter-spacing: 14px
+  text-transform: uppercase
+  // font-size: 3.25rem
+  // font-weight: 900
+  // padding: 0.5em 1em
+  // color: #1d1e22
+  // background-color: #f4f4f4
+  // mix-blend-mode: screen
+  // border-radius: 0.2em
+  // pointer-events: none
+  // user-select: none
 
-.perfil-name {
-  font-family: 'Calistoga';
-  font-size: 25px;
-  color: white;
-}
+.wrapper
+  // background: url('../assets/unsplash02.jpg') no-repeat 50% 50%
+  // background-size: cover
+  height: 100vh
 
-.perfil-category {
-  font-family: 'Monotom';
-  font-weight: normal;
-  font-size: 18px;
-  color: white;
-}
+.map-container
+  position: absolute
+  z-index: 0
+  top: 0px;
+  // left: 50%
+  // transform: translate(-50%, -50%)
+  height: 100%
+  width: 100%
+  // overflow: hidden
 
-.user-email {
-  font-size: 23px;
-  font-family: 'Monotom';
-  font-weight: bold;
-  color: white;
-}
+.title
+  position: absolute
+  top: 20px !important
+  left: 50% !important
+  transform: translateX(-50%)
+  width: 80%
+  height: 150px
+  z-index: 1
+  text-align: center
 
-.user-password {
-  font-size: 17px;
-  font-family: 'Monotom';
-  font-weight: bold;
-  color: white;
-}
-// div1 ------------------ div1 ---
+.title h1
+  font-family: 'Monoton' !important
+  font-size: 45px
+  letter-spacing: 4px
+  text-transform: uppercase
+  color: black
 
-// div2 -------------------- div2 --
-.actions {
-  position: absolute;
-  bottom: 32px;
-  min-height: 400px;
-  min-width: 400px;
-}
+.menu
+  position: absolute
+  top: 50%
+  left: 0px
+  z-index: 1
+  transform: translateY(-50%)
 
-.options {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 16px;
-}
+.menu ul li
+  padding: 8px
+  letter-spacing: 6px
+  background-color: black
+  padding: 16px
+  text-align: center
+  font-family: 'Comic Sans' !important
+  font-size: 22px
+  
 
-.buttons-action {
-  min-height: 80px;
-  max-width: 250px;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  margin-top: 8px;
-  margin-left: -16px;
-}
+.link-menu
+  list-style: none
+  text-decoration: none !important
+  color: white
 
-.buttons-action:hover {
-  width: 100px;
-  background-color: #FE7250;
-}
+.link-menu:hover
+  color: orange
 
+.social-media
+    position: absolute
+    right: 100px
+    bottom: 50px
+    z-index: 1
 
-.nav {
-  position: absolute;
-  bottom: 16px;
-  margin-left: 16px;
-  justify-content: space-around;
-}
-.buttons-nav {
-  align-self: flex-end;
-  border-radius: 10px;
-  margin-right: 16px;
-  background-color: #FE7250;
-}
-// div 2 -------------------- div2 --
+.social-media ul li
+    list-style: none
+    display: inline-block
+    color: black
 
-// div3 ------------------- div3 ----
-.context {
-  position: absolute;
-  right: 32px;
-  top: 150px
-}
-
-.card {
-  height: 100%;
-  width: 100%;
-  background-color: white;
-}
-
-.schedule-card {
-  // border-radius: 15px;
-  max-height: 70%;
-}
-// texts input and into input -------------
-.input-info {
-  margin: 5px;
-  font-size: 15px;
-  font-weight: bold;
-}
-.input {
-  margin: 5px;
-  margin-top: -10px;
-  font-size: 15px;
-}
 </style>

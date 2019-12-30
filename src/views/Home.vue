@@ -1,78 +1,103 @@
 <template>
   <div class="body">
     <div class="overlay" ref="overlay">
-      <img class="imgPresentation" src="../assets/esboco.png" alt="">
+      <!-- <img class="imgPresentation" src="../assets/esboco.png" alt=""> -->
       <h1 class="presentation" ref="presentation">CULTURA</h1>
     </div>
     <div class="wrapper">
       <div class="title">
         <h1 ref="title">cartografia da cultura</h1>
       </div>
-      <div class="menu">
-        <ul>
-          <li ref="mC1">
-            <router-link ref="menu" to="/about" exact>
-              <span class="link-menu">SOBRE</span>
-            </router-link>
-          </li>
-          <li ref="mC1">
+      <div class="nav">
+        
+          <q-btn to="/about" class="btn-menu-text btn-sobre">
+            <span class="link-menu">SOBRE</span>
+          </q-btn>
+          <!-- <li ref="btn-menu-2">
             <router-link ref="menu" to="/profile" exact>
               <span class="link-menu">PERFIL</span>
             </router-link>
-          </li>
-          <li ref="mC2">
-            <router-link ref="menu" to="/schedule" exact>
-              <span class="link-menu">AGENDA</span>
-            </router-link>
-          </li>
-          <li ref="mC3">
-            <router-link ref="menu" to="/signIn" exact>
-              <span class="link-menu">LOGIN</span>
-            </router-link>
-          </li>
-        </ul>
+          </li> -->
+          <q-btn to="/schedule" class="btn-menu-text btn-agenda">
+            <span class="link-menu text-black">AGENDA</span>
+          </q-btn>
+          <q-btn to="/signIn" class="btn-menu-text btn-login">
+            <span class="link-menu text-white">LOGIN</span>
+          </q-btn>
+        
       </div>
-      <div class="social-media">
+      <div class="filter">
+        <q-btn class="btn-filter" round color="black" icon="my_location" />
+      </div>
+      <!-- <div class="social-media">
         <ul>
           <li ref="smIcon1">
             <q-btn flat round type="a" target="_blank" href="https://www.facebook.com/AlgoRitmo.ufms/">
-              <q-icon name="fab fa-facebook-square"></q-icon>
+              <q-icon size="35px" name="fab fa-facebook-square"></q-icon>
             </q-btn>
           </li>
           <li ref="smIcon2">
             <q-btn flat round  type="a" target="_blank" href="https://www.instagram.com/algo.ritmo_/">
-              <q-icon name="fab fa-instagram" href="https://www.instagram.com/algo.ritmo_/"></q-icon>
+              <q-icon size="35px" name="fab fa-instagram" href="https://www.instagram.com/algo.ritmo_/"></q-icon>
             </q-btn>
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
     <div class="map-container">
       <l-map
-        style="width: 100%, height: 90vh"
+        style="width: 100%, height: 100vh"
         :zoom="zoom"
-        :minZoom="1"
         :center="center"
+        :options="{zoomControl: false}"
+        @update:zoom="zoomUpdated"
+        @update:center="centerUpdated"
+        @update:bounds="boundsUpdated"
       >
         <l-tile-layer
           :url="url"
         ></l-tile-layer>
+        <l-control-zoom position="topleft" style="position: absolute; top: 100px" ></l-control-zoom>
+        <l-marker :lat-lng="markerLatLng">
+          <l-popup>
+            <div class="column align-center">
+              <span>Au au</span>
+              <q-avatar class="imgfq" size="60px">
+                <img src="../assets/avatar01.jpg">
+              </q-avatar>
+            </div>
+          </l-popup>
+        </l-marker>
+        <!-- <l-control-attribution position="topleft" prefix="Algo+Ritmo - Research Group" /> -->
       </l-map>
     </div>
   </div>
 </template>
 
 <script>
+import * as Vue2Leaflet from 'vue2-leaflet';
+import {
+  LMap, LTileLayer, LMarker, LControlZoom, LPopup
+} from 'vue2-leaflet';
+
+
 import gsap from 'gsap/all';
 import { TweenMax, Expo } from 'gsap/all';
 gsap.registerPlugin( TweenMax, Expo );
 
 export default {
   name: 'PageHome',
+  components: {
+    LMap,
+    LTileLayer,
+    LMarker,
+    LControlZoom,
+    LPopup,
+  },
   data() {
     return {
       url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-      zoom: 14,
+      zoom: 15,
       center: [-20.460277, -54.612277],
       markerLatLng: [-20.460277, -54.612277],
       bounds: null,
@@ -80,7 +105,7 @@ export default {
     }
   },
   mounted() {
-    const { overlay, presentation, title, smIcon1, smIcon2, mC1, mC2, mC3 } = this.$refs;
+    const { overlay, presentation, title, smIcon1, smIcon2 } = this.$refs;
 
     TweenMax.to(presentation, 2, {
           opacity: 0,
@@ -98,13 +123,13 @@ export default {
           delay: 2.4, opacity: 0, y: 20, ease: Expo.easeInOut
     }, 0.2);
 
-    TweenMax.staggerFrom(mC1, 2, {
+    TweenMax.staggerFrom(btn-menu, 2, {
           delay: 3.4, opacity: 0, y: 20, ease: Expo.easeInOut
     }, 0.2);
 
-    TweenMax.staggerFrom(mC2, 2, {
-          delay: 3.6, opacity: 0, y: 20, ease: Expo.easeInOut
-    }, 0.2);
+    // TweenMax.staggerFrom(btn-menu-2, 2, {
+    //       delay: 3.6, opacity: 0, y: 20, ease: Expo.easeInOut
+    // }, 0.2);
 
     TweenMax.staggerFrom(mC3, 2, {
           delay: 3.8, opacity: 0, y: 20, ease: Expo.easeInOut
@@ -120,12 +145,23 @@ export default {
 
   },
   methods: {
-
-  }
+    zoomUpdated(zoom) {
+      this.zoom = zoom;
+    },
+    centerUpdated(center) {
+      this.center = center;
+    },
+    boundsUpdated(bounds) {
+      this.bounds = bounds;
+    },
+  },
 };
 </script>
 
 <style lang="sass">
+
+@import url('https://fonts.googleapis.com/css?family=Monoton|Righteous&display=swap');
+
 *
   margin: 0
   padding: 0
@@ -179,7 +215,7 @@ export default {
 .map-container
   position: absolute
   z-index: 0
-  top: 50px
+  top: 0px;
   // left: 50%
   // transform: translate(-50%, -50%)
   height: 100%
@@ -188,50 +224,90 @@ export default {
 
 .title
   position: absolute
-  top: 20px
+  top: 0px !important
   left: 50% !important
   transform: translateX(-50%)
+  width: 70%
+  height: 5rem
   z-index: 1
+  text-align: center
 
 .title h1
-  font-family: 'Poppins !important'
-  font-weight: bold
-  font-size: 45px
-  letter-spacing: 8px
-  color: white
+  font-family: 'Monoton' !important
+  font-size: 2.8rem
+  letter-spacing: 4px
   text-transform: uppercase
+  color: black
 
-.menu
+.btn-sobre
   position: absolute
-  top: 50%
-  left: 30px
+  left: 0px
+  bottom: 10px
   z-index: 1
-  transform: translateY(-50%)
+  width: 9rem
+  height: 3rem
+  border-radius: 0px
+  background-color: black
+  box-shadow: none
+
+.btn-agenda
+  position: absolute
+  left: 0px
+  bottom: 75px
+  z-index: 1
+  width: 9rem
+  height: 3rem
+  border-radius: 0px
+  background-color: #fbec5d
+  color: black
+  box-shadow: none
+
+.btn-login
+  position: absolute
+  right: 0px
+  top: 10px
+  z-index: 1
+  width: 9rem
+  height: 3rem
+  border-radius: 0px
+  background-color: black
+  color: black
+  box-shadow: none
+  text-align: center
+
+.btn-filter
+  position: absolute
+  bottom: 32px
+  right: 32px
+  z-index: 1
+
+.text-black
+  color: black
+
+.text-white
+  color: white
+
+.btn-menu-text
+  letter-spacing: 6px
+  padding: 16px
+  text-align: center
+  font-family: 'Comic Sans' !important
   font-size: 22px
-  font-weight: bold
-
-.menu ul li
-  list-style: none
-  color: #fff
-  padding-top: 20px
-  letter-spacing: 8px
-
-.social-media
-    position: absolute
-    right: 100px
-    bottom: 3%
-
-.social-media ul li
-    list-style: none
-    display: inline-block
-    color: #fff
-    padding-top: 20px
+  
 
 .link-menu
   text-decoration: none !important
-  color: white
 
-.link-menu:hover
-  color: white
+.social-media
+    position: absolute
+    top: 30px
+    left: 20px
+    z-index: 1
+
+.social-media ul li
+    list-style: none
+    display: block
+    color: black
+    margin-top: 8px
 
 </style>

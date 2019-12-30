@@ -1,5 +1,5 @@
 <template>
-  <q-page padding style="width: 100%; background: linear-gradient(to left, #ba7453, #d1a984);">
+  <div style="width: 100%; background: linear-gradient(to left, #ba7453, #d1a984);">
     <q-btn flat to="/" color="white" text-color="white" style="margin-top: 10px; margin-left: 15px; margin-bottom: 20px">
         <q-icon name="keyboard_arrow_left" style=""></q-icon>
         <span>Voltar ao Mapa</span>
@@ -38,7 +38,7 @@
         </q-btn>
       </div>
     </q-card>
-  </q-page>
+  </div>
 </template>
 
 <script>
@@ -63,13 +63,6 @@
   flex-direction: column
 
 // content -----------------
-.content
-  height: 85vh
-  border-radius: 20px
-  display: grid
-  grid-template-columns: 25% 2fr 1fr
-  grid-template-rows: 50% 30% 1fr
-  grid-gap: 10px
 
 .col1_item1
   min-width: 400px

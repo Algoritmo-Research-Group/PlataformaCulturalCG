@@ -1,14 +1,14 @@
 <template>
-  <q-page>
-    <div class="body">
-      <q-btn class="outline" filled to="/" text-color="white" style="background-color: transparent; width: 60px; min-height: 150px;
-       position: absolute; top: 64px; left: 62px; border: 2px solid white; border-radius: 20px; padding: 10px; z-index: 1;">
-        <div class="column space-around" style="height: 100%;">
-          <q-icon name="keyboard_arrow_left"></q-icon>
-          <span style="writing-mode: vertical-rl; text-orientation: upright; font-size: 18px; font-weight: 800">Mapa</span>
-        </div>
+    <div class="content">
+      <q-btn to="/" style="position: absolute; top: 10px; left: 0px; z-index: 1; width: 9rem; height: 3.5rem; border-radius: 0px;
+        background-color: black; box-shadow: none;">
+        <div class="row" style="justify-content: center; align-items: center;">
+          <q-icon name="keyboard_arrow_left" class="text-white"></q-icon>
+          <span style="font-size: 15px; font-weight: 800; color: white">Mapa</span>
+        </div> 
       </q-btn>
-      <div class="col-l">
+      <div class="container-center">
+        <div class="col-l">
         <span class="ttl">Cadastre-se:</span>
         <div class="context">
           <p class="p">O cadastro permitirá: </br>
@@ -94,14 +94,15 @@
             </q-item-label>
           </q-item-section>
         </q-item>
-        <div class="btn row-space-around" style="margin-top: 32px">
+        <div class="btn row-space-around" style="margin-top: 24px; margin-bottom: 8px">
           <q-btn outline to="/" label="CANCELAR" style="width: 150px">
           </q-btn>
           <q-btn filled  label="FINALIZAR" color="black" text-color="white" style="width: 180px"></q-btn>
         </div>
       </div>
+      </div>
     </div>
-  </q-page>
+
 </template>
 
 <script>
@@ -145,34 +146,41 @@ export default {
   padding: 0
   box-sizing: border-box
 
-.body
+.content
   width: 100%
   height: 100vh
   font-family: 'Poppins !important'
-  background-image: url('../assets/unsplash02.jpg')
+  background-color: #fbec5d !important
+
+.container-center
+  position: absolute
+  top: 40%
+  left: 50%
+  transform: translate(-50%, -40%)
+  // border: 2px solid red
+  width: 100%
+  height: 70%
 
 .col-l
   position: absolute
-  top: 10%
-  left: 10%
+  top: 0px
+  left: 100px
 
 .col-r
   position: absolute
-  top: 15%
+  top: 0px
   right: 10%
-  min-width: 500px
+  min-width: 450px
   border: solid 2px white
   border-radius: 10px
-  padding: 16px
+  padding: 8px
 
 .ttl
   position: relative
-  height: 100px
-  width: 400px
   font-size: 50px
-  font-weight: 900
   word-wrap: break-word
   color: white
+  font-family: 'Monoton'
 
 .sbttl
   font-size: 18px
@@ -182,14 +190,14 @@ export default {
   font-size: 16px
 
 .context
-  margin-top: 32px
-  max-width: 700px
+  margin-top: 16px
+  max-width: 600px
 
 .p
-  font-size: 20px
+  font-size: 18px
 
 .input
-  margin: 15px
+  margin: 8px
   font-size: 18px
 
 #link

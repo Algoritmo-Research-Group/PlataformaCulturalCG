@@ -2,12 +2,12 @@
   <q-page>
     <div class="body">
       <div class="smooth">
-        <q-btn class="outline" filled to="/" text-color="white" style="background-color: transparent; width: 60px; min-height: 150px;
-         position: absolute; top: 64px; left: 62px; border: 2px solid white; border-radius: 20px; padding: 10px; z-index: 1;">
-          <div class="column space-around" style="height: 100%;">
-            <q-icon name="keyboard_arrow_left"></q-icon>
-            <span style="writing-mode: vertical-rl; text-orientation: upright; font-size: 18px; font-weight: 800">Mapa</span>
-          </div>
+        <q-btn to="/" style="position: absolute; top: 10px; left: 0px; z-index: 1; width: 9rem; height: 3.5rem; border-radius: 0px;
+          background-color: black; box-shadow: none;">
+          <div class="row" style="justify-content: center; align-items: center;">
+            <q-icon name="keyboard_arrow_left" class="text-white"></q-icon>
+            <span style="font-size: 15px; font-weight: 800; color: white">Mapa</span>
+          </div> 
         </q-btn>
         <div class="header">
           <ul>
@@ -263,24 +263,27 @@ section h2
 
 .ttlplt, .ttlfrm, .ttlfq, .ttlctt
   position: absolute
-  top: 150px
+  top: 100px
   left: 20%
   padding: 0
+  font-family: 'Monoton'
+  font-weight: normal
+  
 
 .sttlplt, .sttlfrm
   position: absolute
   left: 20%
-  top: 210px
+  top: 180px
 
 .pplt, .pfrm
   position: absolute
-  top: 260px
+  top: 220px
   left: 20%
   max-width: 600px
 
 .p2plt
   position: absolute
-  top: 420px
+  top: 360px
   left: 20%
   max-width: 600px
 
@@ -292,16 +295,16 @@ section h2
   font-size: 18px
 
 .img1, .img1plt
-  max-width: 350px
+  max-width: 20rem
   position: absolute
-  top: 25%
-  right: 20%
+  top: 150px
+  right: 6.25rem
 
 .img2, .img2plt
-  max-width: 360px
+  max-width: 20rem
   position: absolute
-  top: 50%
-  right: 18%
+  top: 350px
+  right: 9.375rem
 
 .imgfq
   position: relative

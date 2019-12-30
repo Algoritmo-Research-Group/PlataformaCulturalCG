@@ -1,17 +1,16 @@
 <template>
-  <div class="body justify-center align-center">
-    <q-btn class="outline" filled to="/" text-color="white" style="background-color: transparent; width: 60px; min-height: 150px;
-     position: absolute; top: 64px; left: 62px; border: 2px solid white; border-radius: 20px; padding: 10px; z-index: 1;">
-      <div class="column space-around" style="height: 100%;">
-        <q-icon name="keyboard_arrow_left"></q-icon>
-        <span style="writing-mode: vertical-rl; text-orientation: upright; font-size: 18px; font-weight: 800">Mapa</span>
-      </div>
+  <div class="content">
+    <q-btn to="/" style="position: absolute; top: 10px; left: 0px; z-index: 1; width: 9rem; height: 3.5rem; border-radius: 0px;
+      background-color: #fbec5d; box-shadow: none;">
+      <div class="row" style="justify-content: center; align-items: center;">
+        <q-icon name="keyboard_arrow_left" class="text-black"></q-icon>
+        <span style="font-size: 15px; font-weight: 800; color: black">Mapa</span>
+      </div> 
     </q-btn>
-    <div class="q-pa-md">
-      <q-card class="card" v-model="valid" lazy-validation>
-        <q-card-section>
+    <div class="container-center">
+      <div class="card">
+        <div class="column">
           <h2 class="ttl">Seja Bem Vindo!</h2>
-          <span> this.$store.state.user </span>
           <q-input outlined v-model="userEmail" :rules="emailRules" label="login"  color="black" required
             style="font-size: 18px"/>
           <q-input outlined v-model="userPassword" label="senha" :type="isPwd ? 'password' : 'text'" hint="Mínimo de 8 caracteres" color="black" style="font-size: 18px">
@@ -27,13 +26,13 @@
           <div class="btn-field column">
             <router-link class="link" to="/Recover">Esqueceu sua conta?</router-link>
             <router-link class="link" to="/Register">Cadastre-se</router-link>
-            <q-btn filled color="black" :disabled="!valid" @click="signIn()" text-color="white"
-              style="align-self: center; width: 150px; height: 50px; margin-top: 16px;">
+            <q-btn color="black" @click="signIn()" text-color="white"
+              style="align-self: center; width: 150px; height: 50px; margin-top: 16px; border-radius: 0px">
               <span style="font-family: 'Calistoga'; font-weight: 400">LOGAR</span>
             </q-btn>
           </div>
-        </q-card-section>
-      </q-card>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -116,26 +115,37 @@ export default {
 </script>
 
 <style lang="sass">
-
 *
   margin: 0
   padding: 0
   box-sizing: border-box
 
-.body
+.content
   width: 100%
-  height: 100vh
+  height: 100vh !important
+  border-radius: 0px !important
   font-family: 'Poppins !important'
+  background-image: url(../assets/bg01.jpg)
+  background-size: cover
+
+.container-center
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
 
 .card
   width: 500px
   padding: 16px
+  background-color: white
 
 .ttl
   font-size: 55px
   color: black
   text-align: center
   margin-bottom: 32px
+  font-family: 'Monoton'
+  letter-spacing: 2px
 
 .btn-field
   margin: 16px
