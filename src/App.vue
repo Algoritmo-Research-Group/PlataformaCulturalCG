@@ -20,6 +20,9 @@ export default {
   box-sizing: border-box
   height: 100vh
 
+.flex
+   display: flex
+
 .column
   display: flex
   flex-direction: column
@@ -35,6 +38,12 @@ export default {
 .align-center
   display: flex
   align-items: center
+
+.flex-start
+  justify-content: flex-start
+
+.flex-end
+  justify-content: flex-end
 
 .space-around
   justify-content: space-around

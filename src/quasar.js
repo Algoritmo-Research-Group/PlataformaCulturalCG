@@ -3,7 +3,11 @@ import Vue from 'vue';
 import './styles/quasar.styl';
 import '@quasar/extras/roboto-font/roboto-font.css';
 import '@quasar/extras/material-icons/material-icons.css';
+import { colors } from 'quasar';
+
+//colors.setBrand('primary', '#c582a3')
 import {
+  QCheckbox,
   QSelect,
   QTooltip,
   QChip,
@@ -51,15 +55,31 @@ import {
   QCarouselSlide,
   QUploader,
   QToggle,
+  QSlideTransition,
+  QSlideItem,
 } from 'quasar';
 
 Vue.use(Quasar, {
   config: {
     extras: [
       'fontawesome-v5',
-    ]
+    ],
+    brand: {
+      // definir aqui suas cores padroes
+      primary: '#050302',
+      secondary: '#00ff00',
+      // accent: '',
+      // dark: '',
+      // positive: '',
+      // negative: '',
+      // info: '',
+      // warning: '',
+    }
   },
   components: {
+    QCheckbox,
+    QSlideItem,
+    QSlideTransition,
     QToggle,
     QSelect,
     QDialog,

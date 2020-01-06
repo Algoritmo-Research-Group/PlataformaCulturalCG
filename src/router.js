@@ -67,7 +67,7 @@ const router = new Router({
           path: '/schedule',
           name: 'schedule',
           component: Schedule,
-          meta: { requiresAuth: true}
+          // meta: { requiresAuth: true}
         },
       ],
     },
