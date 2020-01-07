@@ -10,7 +10,7 @@
       </div>
       <div class="nav">
         
-          <q-btn to="/about" class="btn-menu-text btn-sobre">
+          <q-btn to="/about" class="btn-menu-text btn-sobre hover-scale">
             <span class="link-menu">SOBRE</span>
           </q-btn>
           <!-- <li ref="btn-menu-2">
@@ -18,28 +18,30 @@
               <span class="link-menu">PERFIL</span>
             </router-link>
           </li> -->
-          <q-btn to="/schedule" class="btn-menu-text btn-agenda">
+          <q-btn to="/schedule" class="btn-menu-text btn-agenda hover-scale">
             <span class="link-menu text-black">AGENDA</span>
           </q-btn>
-          <q-btn to="/signIn" class="btn-menu-text btn-login">
+          <q-btn to="/signIn" class="btn-menu-text btn-login hover-scale">
             <span class="link-menu text-white">LOGIN</span>
           </q-btn>
         
       </div>
       <div class="filter">
+        <q-btn class="btn-all hover-scale05" round color="black" size="1.3em">
+            <q-icon size="1.8em" name="fas fa-bullseye" />
+          </q-btn>
         <div class="row first-context">
           <q-select
-            class="opmfltr"
+            class="primaryfltr"
             v-show="opemFilter"
-            v-model="model"
+            v-model="primarySelection"
             multiple
-            :options="options"
-            use-chips
-            stack-label
+            :options="primaryOptions"
             rounded
             outlined
             dense
-            options-selected-class="text-deep-orange"
+            options-dense
+            options-selected-class="text-blue"
             label="Categorias"
             color="primary"
             bg-color="white"
@@ -56,13 +58,46 @@
                   <q-item-label v-html="scope.opt.label" ></q-item-label>
                 </q-item-section>
                 <q-item-section side>
-                  <q-toggle v-model="model" :val="scope.opt.value" />
+                  <q-toggle v-model="primarySelection" :val="scope.opt.value" />
                 </q-item-section>
               </q-item>
             </template>
           </q-select>
 
-          <q-btn class="btn-filter" @click="opemFilter=!opemFilter" round color="black">
+          <q-select
+            class="artistfltr"
+            v-show="opemFilter"
+            v-model="artistSelection"
+            multiple
+            :options="artistOptions"
+            rounded
+            outlined
+            dense
+            options-dense
+            options-selected-class="text-blue"
+            label="Artistas"
+            color="primary"
+            bg-color="white"
+            emit-value
+            map-options
+          >
+            <template v-slot:option="scope">
+              <q-item
+                v-bind="scope.itemProps"
+                v-on="scope.itemEvents"
+                style=""
+              >
+                <q-item-section>
+                  <q-item-label v-html="scope.opt.label" ></q-item-label>
+                </q-item-section>
+                <q-item-section side>
+                  <q-toggle v-model="artistSelection" :val="scope.opt.value" />
+                </q-item-section>
+              </q-item>
+            </template>
+          </q-select>
+
+          <q-btn class="btn-filter hover-scale" @click="opemFilter=!opemFilter" round color="black">
             <q-icon size="1.2em" name="fas fa-filter" />
           </q-btn>
         </div>
@@ -96,8 +131,8 @@
           :url="url"
         ></l-tile-layer>
         <l-control-zoom position="topleft" style="position: absolute; top: 100px" ></l-control-zoom>
-        <l-marker :lat-lng="markerLatLng">
-          <l-popup class="align-center" style="max-width: 230px; padding: 0px">
+        <l-marker class="" :lat-lng="markerLatLng">
+          <l-popup class="align-center hover-scale05" style="max-width: 230px; padding: 0px">
             <div class="column" style="width: 100%">
               <div class="row align-center" style="justify-content: flex-start;">
                 <q-avatar class="" size="60px;" style="width: 60px">
@@ -136,6 +171,7 @@ import gsap from 'gsap/all';
 import { TweenMax, Expo } from 'gsap/all';
 gsap.registerPlugin( TweenMax, Expo );
 
+
 export default {
   name: 'PageHome',
   components: {
@@ -155,14 +191,18 @@ export default {
       attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       opemFilter: false,
       // selection refece a seleçoes de categorias
-      selection: [ 'Instituições', 'Produtores', 'Estabelecimentos', 'Artistas'],
-      model: [],
-      // obeter opçoes do back para popular o vetor options de categorias
-      options: [
-        { id: '1', label: 'Instituições', value: '1', color: 'primary' },
-        { id: '2', label: 'Produtores', value: '2', color: 'primary' },
-        { id: '3', label: 'Estabelecimetos', value: '3', color: 'secondary' },
-        { id: '4', label: 'Artistas', value: '4', color: 'secondary' }
+      primarySelection: [],
+      artistSelection: [],
+      primaryOptions: [
+        { label: 'Produtores Culturais', value: 1 },
+        { label: 'Estabelecimentos', value: 2 },
+        { label: 'Instituições', value: 3 },
+      ],
+      artistOptions: [
+        { label: 'Pintor', value: 4 },
+        { label: 'Dançarino', value: 5 },
+        { label: 'Músico', value: 6 },
+        { label: 'Poeta', value: 7 },
       ]
     }
   },
@@ -297,6 +337,9 @@ export default {
   z-index: 1
   text-align: center
 
+.title:hover
+  cursor: pointer
+
 .title h1
   font-family: 'Monoton' !important
   font-size: 2.8rem
@@ -306,8 +349,8 @@ export default {
 
 .btn-sobre
   position: absolute
-  left: 0px
-  bottom: 10px
+  left: 10px
+  bottom: 50%
   z-index: 1
   width: 9rem
   height: 3rem
@@ -317,8 +360,8 @@ export default {
 
 .btn-agenda
   position: absolute
-  left: 0px
-  bottom: 75px
+  left: 10px
+  bottom: 40%
   z-index: 1
   width: 9rem
   height: 3rem
@@ -329,7 +372,7 @@ export default {
 
 .btn-login
   position: absolute
-  right: 0px
+  right: 10px
   top: 10px
   z-index: 1
   width: 9rem
@@ -353,7 +396,6 @@ export default {
   font-family: 'Comic Sans' !important
   font-size: 22px
   
-
 .link-menu
   text-decoration: none !important
 
@@ -372,9 +414,20 @@ export default {
   align-items: flex start
   //border: 2px solid green
 
-.opmfltr
-  margin-right: 50px
+.btn-all
+  position: absolute
+  right: 5px
+  bottom: 50px
+
+.primaryfltr
+  margin-right: 8px
   min-width: 250px
+  max-height: 50px
+
+.artistfltr
+  margin-right: 50px
+  min-width: 200px
+  max-height: 50px
 
 .filter-card
   background-color: white

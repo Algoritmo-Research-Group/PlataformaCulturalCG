@@ -16,12 +16,8 @@ export default {
 
 <style lang="sass">
 
-.body, .content
-  box-sizing: border-box
-  height: 100vh
-
 .flex
-   display: flex
+  display: flex
 
 .column
   display: flex
@@ -112,8 +108,13 @@ export default {
 .outline
   border: 2px solid white
 
-.outline:hover
-  transform: scale(1.03)
+.hover-scale05:hover
+  transform: scale(1.05)
+  transition: all 0.3s ease-in-out
+  background-color: none !important
+
+.hover-scale:hover
+  transform: scale(1.2)
   transition: all 0.3s ease-in-out
   background-color: none !important
 

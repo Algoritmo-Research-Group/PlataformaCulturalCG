@@ -7,6 +7,8 @@ import { colors } from 'quasar';
 
 //colors.setBrand('primary', '#c582a3')
 import {
+  QSplitter,
+  QDate,
   QCheckbox,
   QSelect,
   QTooltip,
@@ -77,6 +79,8 @@ Vue.use(Quasar, {
     }
   },
   components: {
+    QSplitter,
+    QDate,
     QCheckbox,
     QSlideItem,
     QSlideTransition,
