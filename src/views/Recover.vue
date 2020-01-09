@@ -137,33 +137,36 @@ export default {
 };
 </script>
 
-<style lang="sass">
+<style lang="scss">
 
-*
-  margin: 0
-  padding: 0
-  box-sizing: border-box
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-.content
-  width: 100%
-  height: 100vh
-  font-family: 'Poppins !important'
-  background-image: url(../assets/yellow01.jpg) !important
+.content {
+  width: 100%;
+  height: 100vh;
+  font-family: 'Poppins !important';
+  background-image: url(../assets/yellow01.jpg);
+}
 
-.q-stepper
-  min-height: 200px
-  width: 650px
-  background-color: none
+.q-stepper {
+  min-height: 200px;
+  width: 650px;
+  background-color: none;
+}
 
-.question
-  font-size: 20px
-  font-weight: 500
-  color: black
+.question {
+  font-size: 20px;
+  font-weight: 500;
+  color: black;
+}
 
-.txt-info
-  font-size: 20px
-  font-weight: 500
-  color: black
-
-
+.txt-info {
+  font-size: 20px;
+  font-weight: 500;
+  color: black;
+}
 </style>

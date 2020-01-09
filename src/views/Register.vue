@@ -11,7 +11,7 @@
         <div class="col-l">
         <span class="ttl">Cadastre-se:</span>
         <div class="context">
-          <p class="p">O cadastro permitirá: </br>
+          <p class="p">O cadastro permitirá: <br>
             <strong>Mapa:</strong> Adicionar um pin no mapa (sua localização e as informações que você inserir serão visto por todos). Cada cadastro permitirá que você insira um pin.
             <br>
             <strong>Agenda:</strong> Inserir na agenda os eventos que você irá participar ou produzir em Campo Grande Além de ser mais um local de divulgação do seu trabalho,
@@ -139,69 +139,80 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 
-*
-  margin: 0
-  padding: 0
-  box-sizing: border-box
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-.content
-  width: 100%
-  height: 100vh
-  font-family: 'Poppins !important'
-  background-color: #fbec5d !important
+.content {
+  width: 100%;
+  height: 100vh;
+  font-family: 'Poppins !important';
+  background-color: #fbec5d;
+}
 
-.container-center
-  position: absolute
-  top: 40%
-  left: 50%
-  transform: translate(-50%, -40%)
-  // border: 2px solid red
-  width: 100%
-  height: 70%
+.container-center {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  // border: 2px solid red;
+  width: 100%;
+  height: 70%;
+}
 
-.col-l
-  position: absolute
-  top: 0px
-  left: 100px
+.col-l {
+  position: absolute;
+  top: 0px;
+  left: 100px;
+}
 
-.col-r
-  position: absolute
-  top: 0px
-  right: 10%
-  min-width: 450px
-  border: solid 2px white
-  border-radius: 10px
-  padding: 8px
+.col-r {
+  position: absolute;
+  top: 0px;
+  right: 10%;
+  min-width: 450px;
+  border: solid 2px white;
+  border-radius: 10px;
+  padding: 8px;
+}
 
-.ttl
-  position: relative
-  font-size: 50px
-  word-wrap: break-word
-  color: white
-  font-family: 'Monoton'
+.ttl {
+  position: relative;
+  font-size: 50px;
+  word-wrap: break-word;
+  color: white;
+  font-family: 'Monoton';
+}
 
-.sbttl
-  font-size: 18px
-  margin: 15px
+.sbttl {
+  font-size: 18px;
+  margin: 15px;
+}
 
-.sbtll-terms
-  font-size: 16px
+.sbtll-terms {
+  font-size: 16px;
+}
 
-.context
-  margin-top: 16px
-  max-width: 600px
+.context {
+  margin-top: 16px;
+  max-width: 600px;
+}
 
-.p
-  font-size: 18px
+.p {
+  font-size: 18px;
+}
 
-.input
-  margin: 8px
-  font-size: 18px
+.input {
+  margin: 8px;
+  font-size: 18px;
+}
 
-#link
-  color: black
-  text-decoration: none
-
+#link {
+  color: black;
+  text-decoration: none;
+}
 </style>

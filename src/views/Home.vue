@@ -263,199 +263,224 @@ export default {
 };
 </script>
 
-<style lang="sass">
+<style lang="scss">
+// @import url('https://fonts.googleapis.com/css?family=Monoton|Righteous&display=swap');
 
-@import url('https://fonts.googleapis.com/css?family=Monoton|Righteous&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-*
-  margin: 0
-  padding: 0
-  box-sizing: border-box
+.body {
+  position: relative;
+  font-family: 'Poppins';
+  height: 100vh;
+  width: 100%;
+}
 
-.body
-  position: relative
-  font-family: 'Poppins !important'
+.overlay {
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  top: 0%;
+}
 
-.overlay
-    z-index: 2
-    position: absolute
-    width: 100%
-    height: 100vh
-    background: #fff
-    top: 0%
+.overlay img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-.overlay img
-  position: absolute
-  top: 50%
-  left: 50%
-  transform: translate(-50%, -50%)
+.overlay h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  color: black;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 14px;
+  text-transform: uppercase;
+  // font-size: 3.25rem;
+  // font-weight: 900;
+  // padding: 0.5em 1em;
+  // color: #1d1e22;
+  // background-color: #f4f4f4;
+  // mix-blend-mode: screen;
+  // border-radius: 0.2em;
+  // pointer-events: none;
+  // user-select: none;
+}
 
-.overlay h1
-  position: absolute
-  top: 50%
-  left: 50%
-  transform: translate(-50%, -50%)
-  width: 100%
-  text-align: center
-  color: black
-  font-size: 30px
-  font-weight: 900
-  letter-spacing: 14px
-  text-transform: uppercase
-  // font-size: 3.25rem
-  // font-weight: 900
-  // padding: 0.5em 1em
-  // color: #1d1e22
-  // background-color: #f4f4f4
-  // mix-blend-mode: screen
-  // border-radius: 0.2em
-  // pointer-events: none
-  // user-select: none
+.wrapper {
+  // background: url('../assets/unsplash02.jpg') no-repeat 50% 50%;
+  // background-size: cover;
+  height: 100vh;
+}
 
-.wrapper
-  // background: url('../assets/unsplash02.jpg') no-repeat 50% 50%
-  // background-size: cover
-  height: 100vh
-
-.map-container
-  position: absolute
-  z-index: 0
+.map-container {
+  position: absolute;
+  z-index: 0;
   top: 0px;
-  // left: 50%
-  // transform: translate(-50%, -50%)
-  height: 100%
-  width: 100%
-  // overflow: hidden
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  // overflow: hidden;
+}
 
-.title
-  position: absolute
-  top: 0px !important
-  left: 50% !important
-  transform: translateX(-50%)
-  width: 70%
-  height: 5rem
-  z-index: 1
-  text-align: center
+.title {
+  position: absolute;
+  top: 0px !important;
+  left: 50% !important;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 5rem;
+  z-index: 1;
+  text-align: center;
+}
 
-.title:hover
-  cursor: pointer
+.title:hover {
+  cursor: pointer;
+}
 
-.title h1
-  font-family: 'Monoton' !important
-  font-size: 2.8rem
-  letter-spacing: 4px
-  text-transform: uppercase
-  color: black
+.title h1 {
+  font-family: 'Monoton' !important;
+  font-size: 2.8rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: black;
+}
 
-.btn-sobre
-  position: absolute
-  left: 10px
-  bottom: 50%
-  z-index: 1
-  width: 9rem
-  height: 3rem
-  border-radius: 0px
-  background-color: black
-  box-shadow: none
+.btn-sobre {
+  position: absolute;
+  left: 10px;
+  bottom: 50%;
+  z-index: 1;
+  width: 9rem;
+  height: 3rem;
+  border-radius: 0px;
+  background-color: black;
+  box-shadow: none;
+}
 
-.btn-agenda
-  position: absolute
-  left: 10px
-  bottom: 40%
-  z-index: 1
-  width: 9rem
-  height: 3rem
-  border-radius: 0px
-  background-color: #fbec5d
-  color: black
-  box-shadow: none
+.btn-agenda {
+  position: absolute;
+  left: 10px;
+  bottom: 40%;
+  z-index: 1;
+  width: 9rem;
+  height: 3rem;
+  border-radius: 0px;
+  background-color: #fbec5d;
+  color: black;
+  box-shadow: none;
+}
 
-.btn-login
-  position: absolute
-  right: 10px
-  top: 10px
-  z-index: 1
-  width: 9rem
-  height: 3rem
-  border-radius: 0px
-  background-color: black
-  color: black
-  box-shadow: none
-  text-align: center
+.btn-login {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1;
+  width: 9rem;
+  height: 3rem;
+  border-radius: 0px;
+  background-color: black;
+  color: black;
+  box-shadow: none;
+  text-align: center;
+}
 
-.text-black
-  color: black
+.text-black {
+  color: black;
+}
 
-.text-white
-  color: white
+.text-white {
+  color: white;
+}
 
-.btn-menu-text
-  letter-spacing: 6px
-  padding: 16px
-  text-align: center
-  font-family: 'Comic Sans' !important
-  font-size: 22px
-  
-.link-menu
-  text-decoration: none !important
+.btn-menu-text {
+  letter-spacing: 6px;
+  padding: 16px;
+  text-align: center;
+  font-family: 'Comic Sans' !important;
+  font-size: 22px;
+}
 
-.filter
-  display: flex
-  position: absolute
-  bottom: 24px
-  right: 24px
-  z-index: 1
-  //border: 2px solid red
+.link-menu{
+  text-decoration: none !important;
+}
 
-.first-context
-  display: flex
-  flex-direction: row
-  justify-content: flex-end
-  align-items: flex start
-  //border: 2px solid green
+.filter {
+  display: flex;
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1;
+  //border: 2px solid red;
+}
 
-.btn-all
-  position: absolute
-  right: 5px
-  bottom: 50px
+.first-context {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex start;
+  //border: 2px solid green;
+}
 
-.primaryfltr
-  margin-right: 8px
-  min-width: 250px
-  max-height: 50px
+.btn-all {
+  position: absolute;
+  right: 5px;
+  bottom: 50px;
+}
 
-.artistfltr
-  margin-right: 50px
-  min-width: 200px
-  max-height: 50px
+.primaryfltr {
+  margin-right: 8px;
+  min-width: 250px;
+  max-height: 50px;
+}
 
-.filter-card
-  background-color: white
-  // z-index: 1
-  overflow: hidden
-  position: absolute
-  bottom: 0px
-  right: 50px
-  max-height: 50px
-  min-width: 350px
+.artistfltr{
+  margin-right: 50px;
+  min-width: 200px;
+  max-height: 50px;
+}
 
+.filter-card {
+  background-color: white;
+  // z-index: 1;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0px;
+  right: 50px;
+  max-height: 50px;
+  min-width: 350px;
+}
 
-.btn-filter
-  position: absolute
-  bottom: 0px
-  right: 0px
-  z-index: 1
+.btn-filter {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  z-index: 1;
+}
 
-.social-media
-  position: absolute
-  top: 30px
-  left: 20px
-  z-index: 1
+.social-media {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  z-index: 1;
+}
 
-.social-media ul li
-  list-style: none
-  display: block
-  color: black
-  margin-top: 8px
-
+.social-media ul li {
+  list-style: none;
+  display: block;
+  color: black;
+  margin-top: 8px;
+}
 </style>

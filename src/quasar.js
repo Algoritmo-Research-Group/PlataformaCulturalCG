@@ -7,6 +7,11 @@ import { colors } from 'quasar';
 
 //colors.setBrand('primary', '#c582a3')
 import {
+  QList,
+  QItem,
+  QItemSection,
+  QItemLabel,
+  QBadge,
   QSplitter,
   QDate,
   QCheckbox,
@@ -36,11 +41,7 @@ import {
   QBtn,
   QIcon,
   QImg,
-  QList,
   QInput,
-  QItem,
-  QItemSection,
-  QItemLabel,
   QTabs,
   QTab,
   QRouteTab,
@@ -79,6 +80,11 @@ Vue.use(Quasar, {
     }
   },
   components: {
+    QList,
+    QItem,
+    QItemSection,
+    QItemLabel,
+    QBadge,
     QSplitter,
     QDate,
     QCheckbox,

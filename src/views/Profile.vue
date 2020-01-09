@@ -198,7 +198,7 @@
 
             <q-separator />
             <q-card-actions align="right" style="background: white; ">
-              <q-btn filled color="black" v-if="">Adicionar Evento</q-btn>
+              <q-btn filled color="black" >Adicionar Evento</q-btn>
             </q-card-actions>
           </q-card>
         </div>
@@ -466,12 +466,13 @@ button {
   width: 100%;
 }
 
-// texts input and into input -------------
+// texts input and into input ----+--------
 .input-info {
   margin: 5px;
   font-size: 15px;
   font-weight: bold;
 }
+
 .input {
   margin: 5px;
   margin-top: -10px;

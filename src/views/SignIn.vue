@@ -114,51 +114,58 @@ export default {
 }
 </script>
 
-<style lang="sass">
-*
-  margin: 0
-  padding: 0
-  box-sizing: border-box
+<style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-.content
-  width: 100%
-  height: 100vh !important
-  border-radius: 0px !important
-  font-family: 'Poppins !important'
-  background-image: url(../assets/bg01.jpg)
-  background-size: cover
+.content {
+  width: 100%;
+  height: 100vh !important;
+  border-radius: 0px !important;
+  font-family: 'Poppins !important';
+  // background-image: url(../assets/bg01.jpg);
+  background-size: cover;
+}
 
-.container-center
-  position: absolute
-  top: 50%
-  left: 50%
-  transform: translate(-50%, -50%)
+.container-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-.card
-  width: 500px
-  padding: 16px
-  background-color: white
+.card {
+  width: 500px;
+  padding: 16px;
+  background-color: white;
+}
 
-.ttl
-  font-size: 55px
-  color: black
-  text-align: center
-  margin-bottom: 32px
-  font-family: 'Monoton'
-  letter-spacing: 2px
+.ttl {
+  font-size: 55px;
+  color: black;
+  text-align: center;
+  margin-bottom: 32px;
+  font-family: 'Monoton';
+  letter-spacing: 2px;
+}
 
-.btn-field
-  margin: 16px
-  margin-left: 8px
+.btn-field {
+  margin: 16px;
+  margin-left: 8px;
+}
 
-.link
-  text-decoration: none
-  font-family: 'Calistoga'
-  font-weight: normal
-  font-size: 18px
-  color: black
+.link {
+  text-decoration: none;
+  font-family: 'Calistoga';
+  font-weight: normal;
+  font-size: 18px;
+  color: black;
+}
 
-.link:hover
-  color: grey
-
+.link:hover {
+  color: grey;
+}
 </style>

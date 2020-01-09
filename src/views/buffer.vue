@@ -1,281 +1,201 @@
 <template>
-  <div class="body">
-    <div class="overlay" ref="overlay">
-      <img class="imgPresentation" src="../assets/esboco.png" alt="">
-      <h1 class="presentation" ref="presentation">CULTURA</h1>
-    </div>
-    <div class="wrapper">
-      <div class="title">
-        <h1 ref="title">cartografia da cultura</h1>
+  <div class="content">
+    <q-btn to="/" style="position: absolute; bottom: 10px; left: 0px; z-index: 1; width: 9rem; height: 3.5rem; border-radius: 0px;
+      background-color: black; box-shadow: none;">
+      <div class="row" style="justify-content: center; align-items: center;">
+        <q-icon name="keyboard_arrow_left" class="text-white"></q-icon>
+        <span style="font-size: 15px; font-weight: 800; color: white">Mapa</span>
+      </div> 
+    </q-btn>
+    <div class="card">
+      <div class="col-l">
+        <span style="font-size: 35px; align-self: flex-start; color: white; font-weight: normal; 
+          letter-spacing: 2px; font-family: 'Monoton">AGENDA CULTURAL</span>
+        <span style="margin-bottom: 24px; color: white; font-weight: bolder">Campo Grande - MS</span>
+        <q-card class="event-field column" style="padding: 8px; min-heigth: 400px">
+          <q-card-section>
+            <div class="text-h5" style="align-self: center">Cromossomos</div>
+            
+          </q-card-section>
+          <q-separator inset />
+          <img src="../assets/people02.jpg" style="max-height: 150px; border-radius: 5px">
+          <div class="user" style="margin-top: 8px">
+            <q-avatar size="3em">
+              <img src="../assets/avatar01.jpg">
+            </q-avatar>
+            <q-badge outline align="bottom" color="teal" style="margin-left: 8px">
+              categoria
+            </q-badge>
+            <p style="margin-top: 16px">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae totam voluptatem veritatis adipisci labore accusantium quasi iste
+            </p>
+          </div>
+
+        </q-card>
       </div>
-      <div class="menu">
-        <ul>
-          <li ref="mC1">
-            <router-link ref="menu" to="/about" exact>
-              <span class="link-menu">SOBRE</span>
-            </router-link>
-          </li>
-          <!-- <li ref="mC2">
-            <router-link ref="menu" to="/profile" exact>
-              <span class="link-menu">PERFIL</span>
-            </router-link>
-          </li> -->
-          <li ref="mC2">
-            <router-link ref="menu" to="/schedule" exact>
-              <span class="link-menu">AGENDA</span>
-            </router-link>
-          </li>
-          <li ref="mC3">
-            <router-link ref="menu" to="/signIn" exact>
-              <span class="link-menu">LOGIN</span>
-            </router-link>
-          </li>
-        </ul>
+
+      <div class="col-m">
+        <div style="position: absolute; top: 30px">
+          <q-table
+            grid
+            title="Treats"
+            :data="data"
+            :columns="columns"
+            row-key="name"
+            :filter="filter"
+            hide-header
+          >
+            <template v-slot:top-right>
+              <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
+                <template v-slot:append>
+                  <q-icon name="search" />
+                </template>
+              </q-input>
+            </template>
+          </q-table>
+        </div>
       </div>
-      <div class="social-media">
-        <ul>
-          <li ref="smIcon1">
-            <q-btn flat round type="a" target="_blank" href="https://www.facebook.com/AlgoRitmo.ufms/">
-              <q-icon size="35px" name="fab fa-facebook-square"></q-icon>
-            </q-btn>
-          </li>
-          <li ref="smIcon2">
-            <q-btn flat round  type="a" target="_blank" href="https://www.instagram.com/algo.ritmo_/">
-              <q-icon size="35px" name="fab fa-instagram" href="https://www.instagram.com/algo.ritmo_/"></q-icon>
-            </q-btn>
-          </li>
-        </ul>
+      <div class="col-r">
+        <q-date
+          class="date"
+          title="Alô"
+          subtitle="hello"
+          v-model="date"
+          :locale="myLocale"
+          :events="events"
+          :event-color="(date) => date[9] % 2 === 0 ? 'teal' : 'orange'"
+          minimal
+          today-btn
+          default-year-month="2020/01"
+          flat
+          color="yellow"
+          text-color="black"
+          style="height: 400px"
+        />
+        <span class="info-col-r"> <strong> {{ formated_date }} </strong></span>
       </div>
     </div>
-    <div class="map-container">
-      <l-map
-        style="width: 100%, height: 100vh"
-        :zoom="zoom"
-        :center="center"
-        :options="{zoomControl: false}"
-        @update:zoom="zoomUpdated"
-        @update:center="centerUpdated"
-        @update:bounds="boundsUpdated"
-      >
-        <l-tile-layer
-          :url="url"
-        ></l-tile-layer>
-        <l-control-zoom position="topright"  ></l-control-zoom>
-        <l-marker :lat-lng="markerLatLng">
-          <l-popup>
-            <div class="column align-center">
-              <span>Au au</span>
-              <q-avatar class="imgfq" size="60px">
-                <img src="../assets/avatar01.jpg">
-              </q-avatar>
-            </div>
-          </l-popup>
-        </l-marker>
-        <l-control-attribution position="topleft" prefix="Algo+Ritmo - Research Group" />
-      </l-map>
-    </div>
+    
   </div>
 </template>
 
 <script>
-import * as Vue2Leaflet from 'vue2-leaflet';
-import {
-  LMap, LTileLayer, LMarker, LControlZoom, LPopup
-} from 'vue2-leaflet';
-
-
-import gsap from 'gsap/all';
-import { TweenMax, Expo } from 'gsap/all';
-gsap.registerPlugin( TweenMax, Expo );
+import { date } from 'quasar'
 
 export default {
-  name: 'PageHome',
-  components: {
-    LMap,
-    LTileLayer,
-    LMarker,
-    LControlZoom,
-    LPopup,
-  },
+  name: 'SchedulePage',
   data() {
     return {
-      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-      zoom: 15,
-      center: [-20.460277, -54.612277],
-      markerLatLng: [-20.460277, -54.612277],
-      bounds: null,
-      attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      date: '2020/01/01',
+      // abaixo YYYY/MM/DD
+      events: [ '2020/01/01', '2020/01/03', '2020/01/23' ],
+      myLocale: {
+      /* starting with Sunday */
+      days: 'Domingo_Segunda_Terça_Quarta_Quinta_Sexta_Sábado'.split('_'),
+      daysShort: 'Dom_Seg_Ter_Qua_Qui_Sex_Sáb'.split('_'),
+      months: 'Janeiro_Fevereiro_Março_Abril_Maio_Junho_Julio_Agosto_Setembro_Outubro_Novembro_Dezembro'.split('_'),
+      monthsShort: 'Jan_Fev_Mar_Abr_Mai_Jun_Jul_Ago_Set_Out_Nov_Dez'.split('_'),
+      firstDayOfWeek: 1,
+      url: '../assets/people02.jpg',
+      contacts: [ 
+        { id: 1, name: 'Ruddy Jedrzej', email: 'rjedrzej0@discuz.net', letter: 'R' },
+        { id: 2, name: 'Mallorie Alessandrini',  email: 'malessandrini1@marketwatch.com', letter: 'M' },
+        { id: 3, name: 'Elisabetta Wicklen', email: 'ewicklen2@microsoft.com', letter: 'E' },
+        { id: 4, name: 'Seka Fawdrey', email: 'sfawdrey3@wired.com', letter: 'S' } 
+      ],
+      filter: '',
+      columns: [
+        {
+          name: 'desc',
+          required: true,
+          label: '',
+          align: 'left',
+          field: row => row.name,
+          format: val => `${val}`,
+          sortable: true
+        },
+        { name: 'img', align: 'center', label: '', field: 'img', sortable: true },
+        { name: 'local', label: '', field: 'loc', sortable: true },
+        { name: 'user', label: '', field: 'user' }
+      ],
+      data: [
+        { name: 'evento', img: 'algo', local: 'brava', user: 'usuario' },
+        { name: 'evento2', img: 'algo', loc: 'rua', user: 'beltrano' },
+        { name: 'evento3', img: 'algo', loc: 'praça', user: 'ciclano' },
+        { name: 'evento4', img: 'algo', loc: 'ufms', user: 'fulano' },
+      ]
+    }
+
     }
   },
-  mounted() {
-    const { overlay, presentation, title, smIcon1, smIcon2, mC1, mC2, mC3 } = this.$refs;
-
-    TweenMax.to(presentation, 2, {
-          opacity: 0,
-          y: -60,
-          ease: Expo.easeInOut
-    });
-
-    TweenMax.to(overlay, 2, {
-          delay: 1,
-          top: "-100%",
-          ease: Expo.easeInOut
-    });
-
-    TweenMax.staggerFrom(title, 2, {
-          delay: 2.4, opacity: 0, y: 20, ease: Expo.easeInOut
-    }, 0.2);
-
-    TweenMax.staggerFrom(mC1, 2, {
-          delay: 3.4, opacity: 0, y: 20, ease: Expo.easeInOut
-    }, 0.2);
-
-    TweenMax.staggerFrom(mC2, 2, {
-          delay: 3.6, opacity: 0, y: 20, ease: Expo.easeInOut
-    }, 0.2);
-
-    TweenMax.staggerFrom(mC3, 2, {
-          delay: 3.8, opacity: 0, y: 20, ease: Expo.easeInOut
-    }, 0.2);
-
-    TweenMax.staggerFrom(smIcon1, 2, {
-          delay: 3.5, opacity: 0, y: 50, ease: Expo.easeInOut
-    }, 0.2);
-
-    TweenMax.staggerFrom(smIcon2, 2.2, {
-          delay: 3.7, opacity: 0, y: 50, ease: Expo.easeInOut
-    }, 0.2);
-
-  },
-  methods: {
-    zoomUpdated(zoom) {
-      this.zoom = zoom;
-    },
-    centerUpdated(center) {
-      this.center = center;
-    },
-    boundsUpdated(bounds) {
-      this.bounds = bounds;
-    },
-  },
-};
+  computed: {
+    formated_date(){
+      let timeStamp = this.date
+      let formattedString = date.formatDate(timeStamp, 'YYYY-MM-DD')
+      return formattedString
+    }
+  }
+}
 </script>
 
 <style lang="sass">
+// .content
+//   height: 100vh
+//   width: 100%
 
-@import url('https://fonts.googleapis.com/css?family=Monoton|Righteous&display=swap');
+// .card
+//   width: 100%
+//   height: 100%
+//   position: absolute
+//   top: 50%
+//   left: 50%
+//   transform: translate(-50%, -50%)
+//   display: flex
+//   flex-direction: row
+//   padding: 0px
 
-*
-  margin: 0
-  padding: 0
-  box-sizing: border-box
+// .col-l
+//   display: flex
+//   flex-direction: column
+//   width: 300px
+//   height: 100%
+//   padding: 8px
+//   position: absolute
+//   left: 0px
+//   background-color: #248eff
 
-.body
-  position: relative
-  font-family: 'Poppins !important'
+// .col-m
+//   box-sizing: border-box
+//   display: flex
+//   flex-direction column
+//   min-width: 500px
+//   padding: 8px
+//   position: absolute
+//   left: 300px
 
-.overlay
-    z-index: 2
-    position: absolute
-    width: 100%
-    height: 100vh
-    background: #fff
-    top: 0%
+// .col-r
+//   display: flex
+//   flex-direction column
+//   width: 320px
+//   height: 100%
+//   padding: 8px
+//   position: absolute
+//   right: 0px
+//   padding: 8px
+//   background-color: #fbec5d
 
-.overlay img
-  position: absolute
-  top: 50%
-  left: 50%
-  transform: translate(-50%, -50%)
+// .date
+//   position: absolute
+//   top: 32px
+//   right: 8px
 
-.overlay h1
-  position: absolute
-  top: 50%
-  left: 50%
-  transform: translate(-50%, -50%)
-  width: 100%
-  text-align: center
-  color: black
-  font-size: 30px
-  font-weight: 900
-  letter-spacing: 14px
-  text-transform: uppercase
-  // font-size: 3.25rem
-  // font-weight: 900
-  // padding: 0.5em 1em
-  // color: #1d1e22
-  // background-color: #f4f4f4
-  // mix-blend-mode: screen
-  // border-radius: 0.2em
-  // pointer-events: none
-  // user-select: none
+// .info-col-r
+//   font-size: 22px
+//   font-family: 
+//   position: absolute
+//   bottom: 0px
+//   right: 50%
+//   transform: translate(50%)
 
-.wrapper
-  // background: url('../assets/unsplash02.jpg') no-repeat 50% 50%
-  // background-size: cover
-  height: 100vh
-
-.map-container
-  position: absolute
-  z-index: 0
-  top: 0px;
-  // left: 50%
-  // transform: translate(-50%, -50%)
-  height: 100%
-  width: 100%
-  // overflow: hidden
-
-.title
-  position: absolute
-  top: 20px !important
-  left: 50% !important
-  transform: translateX(-50%)
-  width: 80%
-  height: 150px
-  z-index: 1
-  text-align: center
-
-.title h1
-  font-family: 'Monoton' !important
-  font-size: 45px
-  letter-spacing: 4px
-  text-transform: uppercase
-  color: black
-
-.menu
-  position: absolute
-  top: 50%
-  left: 0px
-  z-index: 1
-  transform: translateY(-50%)
-
-.menu ul li
-  padding: 8px
-  letter-spacing: 6px
-  background-color: black
-  padding: 16px
-  text-align: center
-  font-family: 'Comic Sans' !important
-  font-size: 22px
-  
-
-.link-menu
-  list-style: none
-  text-decoration: none !important
-  color: white
-
-.link-menu:hover
-  color: orange
-
-.social-media
-    position: absolute
-    right: 100px
-    bottom: 50px
-    z-index: 1
-
-.social-media ul li
-    list-style: none
-    display: inline-block
-    color: black
 
 </style>
