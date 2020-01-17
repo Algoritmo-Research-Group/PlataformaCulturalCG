@@ -87,6 +87,14 @@ export default {
   margin-top: 32px;
 }
 
+.margin-bottom8 {
+  margin-bottom: 8px;
+}
+
+.margin-bottom16 {
+  margin-bottom: 16px;
+}
+
 // padding ----------------------------- padding
 .padding-8 {
   padding: 8px;

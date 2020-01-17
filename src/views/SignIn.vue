@@ -114,7 +114,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 * {
   margin: 0;
   padding: 0;
@@ -125,9 +125,8 @@ export default {
   width: 100%;
   height: 100vh !important;
   border-radius: 0px !important;
-  font-family: 'Poppins !important';
+  font-family: 'Poppins';
   // background-image: url(../assets/bg01.jpg);
-  background-size: cover;
 }
 
 .container-center {

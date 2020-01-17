@@ -137,7 +137,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 * {
   margin: 0;
@@ -148,7 +148,7 @@ export default {
 .content {
   width: 100%;
   height: 100vh;
-  font-family: 'Poppins !important';
+  font-family: 'Poppins';
   background-image: url(../assets/yellow01.jpg);
 }
 

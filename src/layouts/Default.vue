@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated class="bg-black text-white shadow-2 rounded-borders"style="height: 0px;">
+    <q-header elevated class="bg-black text-white shadow-2 rounded-borders" style="height: 0px;">
       <!-- <q-toolbar>
         <q-btn flat label="Homepage" to="/" exact/>
         <q-space /> 

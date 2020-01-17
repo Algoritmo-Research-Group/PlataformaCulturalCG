@@ -263,7 +263,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 // @import url('https://fonts.googleapis.com/css?family=Monoton|Righteous&display=swap');
 
 * {

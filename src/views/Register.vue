@@ -150,7 +150,7 @@ export default {
 .content {
   width: 100%;
   height: 100vh;
-  font-family: 'Poppins !important';
+  font-family: 'Poppins';
   background-color: #fbec5d;
 }
 
