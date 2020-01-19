@@ -4,32 +4,51 @@
       <!-- <img class="imgPresentation" src="../assets/esboco.png" alt=""> -->
       <h1 class="presentation" ref="presentation">CULTURA</h1>
     </div>
+
+    <q-btn class="btn-menu" round @click="showNav" size="1.3em">
+      <q-icon name="keyboard_arrow_right" size="2.5em"></q-icon>
+    </q-btn>
+    <nav class="column align-center space-around" :class="{ 'show' : showSideBar }">
+      <q-btn class="text-black top-32" @click="showNav" round size="1.3em" style="position: absolute;">
+        <q-icon name="keyboard_arrow_left" color="white"></q-icon>
+      </q-btn>
+      <ul class="navigation-list">
+        <li class="navigation-item">
+          <router-link class="navigation-link a" type="link" to="/about" exact>
+            <span class="text-link" data-text="SOBRE">SOBRE</span>
+          </router-link>
+        </li>
+        <li class="navigation-item">
+          <router-link class="navigation-link a" ref="link" to="/schedule" exact>
+            <span class="text-link" data-text="AGENDA">AGENDA</span>
+          </router-link>
+        </li>
+        <li class="navigation-item">
+          <router-link class="navigation-link a" ref="link" to="/signIn" exact>
+            <span class="text-link" data-text="LOGIN">LOGIN</span>
+          </router-link>
+        </li>
+      </ul>
+      <div class="row space-around social-media">
+        <q-btn flat round type="a" target="_blank" size="1.1em" href="https://www.facebook.com/AlgoRitmo.ufms/">
+          <q-icon size="1.3em" name="fab fa-facebook-square" color="white"></q-icon>
+        </q-btn>
+        <q-btn flat round  type="a" target="_blank" size="1.1em" href="https://www.instagram.com/algo.ritmo_/">
+          <q-icon size="1.3em" name="fab fa-instagram" color="white"></q-icon>
+        </q-btn>
+      </div>
+      
+    </nav>
+
+    <div class="title-field">
+      <h1 class="title" data-text="CARTOGRAFIA DA CULTURA">cartografia da cultura</h1>
+    </div>
+
     <div class="wrapper">
-      <div class="title">
-        <h1 ref="title">cartografia da cultura</h1>
-      </div>
-      <div class="nav">
-        
-          <q-btn to="/about" class="btn-menu-text btn-sobre hover-scale">
-            <span class="link-menu">SOBRE</span>
-          </q-btn>
-          <!-- <li ref="btn-menu-2">
-            <router-link ref="menu" to="/profile" exact>
-              <span class="link-menu">PERFIL</span>
-            </router-link>
-          </li> -->
-          <q-btn to="/schedule" class="btn-menu-text btn-agenda hover-scale">
-            <span class="link-menu text-black">AGENDA</span>
-          </q-btn>
-          <q-btn to="/signIn" class="btn-menu-text btn-login hover-scale">
-            <span class="link-menu text-white">LOGIN</span>
-          </q-btn>
-        
-      </div>
-      <div class="filter">
-        <q-btn class="btn-all hover-scale05" round color="black" size="1.3em">
-            <q-icon size="1.8em" name="fas fa-bullseye" />
-          </q-btn>
+      <q-btn round class="btn-filter" @click="showFilterBar" size="1.3em">
+        <q-icon size="2.5em" name="keyboard_arrow_up" />
+      </q-btn>
+      <div class="filter" :class="{ 'showFilter' : showFilter }">
         <div class="row first-context">
           <q-select
             class="primaryfltr"
@@ -96,27 +115,10 @@
               </q-item>
             </template>
           </q-select>
-
-          <q-btn class="btn-filter hover-scale" @click="opemFilter=!opemFilter" round color="black">
-            <q-icon size="1.2em" name="fas fa-filter" />
-          </q-btn>
         </div>
       </div>
-      <!-- <div class="social-media">
-        <ul>
-          <li ref="smIcon1">
-            <q-btn flat round type="a" target="_blank" href="https://www.facebook.com/AlgoRitmo.ufms/">
-              <q-icon size="35px" name="fab fa-facebook-square"></q-icon>
-            </q-btn>
-          </li>
-          <li ref="smIcon2">
-            <q-btn flat round  type="a" target="_blank" href="https://www.instagram.com/algo.ritmo_/">
-              <q-icon size="35px" name="fab fa-instagram" href="https://www.instagram.com/algo.ritmo_/"></q-icon>
-            </q-btn>
-          </li>
-        </ul>
-      </div> -->
     </div>
+
     <div class="map-container">
       <l-map
         style="width: 100%, height: 100vh"
@@ -130,13 +132,13 @@
         <l-tile-layer
           :url="url"
         ></l-tile-layer>
-        <l-control-zoom position="topleft" style="position: absolute; top: 100px" ></l-control-zoom>
+        <l-control-zoom position="topright" style="position: absolute; top: 100px" ></l-control-zoom>
         <l-marker class="" :lat-lng="markerLatLng">
           <l-popup class="align-center hover-scale05" style="max-width: 230px; padding: 0px">
             <div class="column" style="width: 100%">
               <div class="row align-center" style="justify-content: flex-start;">
                 <q-avatar class="" size="60px;" style="width: 60px">
-                  <img src="../assets/avatar01.jpg">
+                  <img src="../assets/statics/avatar01.jpg">
                 </q-avatar>
                 <span style="margin-left: 16px; font-size: 15px; font-weight: bold">Pin de exemplo</span>
               </div>
@@ -171,7 +173,6 @@ import gsap from 'gsap/all';
 import { TweenMax, Expo } from 'gsap/all';
 gsap.registerPlugin( TweenMax, Expo );
 
-
 export default {
   name: 'PageHome',
   components: {
@@ -183,6 +184,8 @@ export default {
   },
   data() {
     return {
+      showSideBar: false,
+      showFilter: false,
       url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       zoom: 15,
       center: [-20.460277, -54.612277],
@@ -225,26 +228,6 @@ export default {
           delay: 2.4, opacity: 0, y: 20, ease: Expo.easeInOut
     }, 0.2);
 
-    // TweenMax.staggerFrom(btn-menu, 2, {
-    //       delay: 3.4, opacity: 0, y: 20, ease: Expo.easeInOut
-    // }, 0.2);
-
-    // TweenMax.staggerFrom(btn-menu-2, 2, {
-    //       delay: 3.6, opacity: 0, y: 20, ease: Expo.easeInOut
-    // }, 0.2);
-
-    // TweenMax.staggerFrom(mC3, 2, {
-    //       delay: 3.8, opacity: 0, y: 20, ease: Expo.easeInOut
-    // }, 0.2);
-
-    // TweenMax.staggerFrom(smIcon1, 2, {
-    //       delay: 3.5, opacity: 0, y: 50, ease: Expo.easeInOut
-    // }, 0.2);
-
-    // TweenMax.staggerFrom(smIcon2, 2.2, {
-    //       delay: 3.7, opacity: 0, y: 50, ease: Expo.easeInOut
-    // }, 0.2);
-
   },
   methods: {
     zoomUpdated(zoom) {
@@ -259,6 +242,12 @@ export default {
     onChange: function (message) {
       console.log(message)
     },
+    showNav() {
+      this.showSideBar = !this.showSideBar;
+    },
+    showFilterBar() {
+      this.showFilter = !this.showFilter;
+    }
   },
 };
 </script>
@@ -277,10 +266,11 @@ export default {
   font-family: 'Poppins';
   height: 100vh;
   width: 100%;
+  overflow: hidden;
 }
 
 .overlay {
-  z-index: 2;
+  z-index: 3;
   position: absolute;
   width: 100%;
   height: 100vh;
@@ -318,6 +308,86 @@ export default {
   // user-select: none;
 }
 
+.btn-menu {
+  z-index: 2; 
+  position: absolute; 
+  top: 32px; 
+  left: 32px; 
+  box-shadow: none;
+}
+
+.btn-menu:hover::before {
+  content: 'MENU';
+  font-family: 'Courier new';
+  font-size: 1.5em;
+  font-weight: 900;
+  letter-spacing: 4px;
+  margin-left: 45px;
+  color: black;
+}
+
+nav{
+  height: 100vh;
+  width: 0px;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  overflow: hidden;
+  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  opacity: 0;
+}
+
+.show {
+  width: 120px;
+  transition: 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  opacity: 1;
+}
+
+.navigation-list {
+  position: absolute;
+  top: 15%;
+}
+
+.navigation-item {
+  display: block;
+  user-select: none;
+  margin: 16px;
+}
+
+.a {
+  font-family: 'Monoton', 'Courier New', Courier, monospace;
+  font-size: 2.2em;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+span {
+  position: relative;
+  display: block;
+  writing-mode: vertical-lr;
+}
+
+.navigation-item span:before {
+  height: 0px;
+  color: white;
+  overflow: hidden;
+  position: absolute;
+  content: attr(data-text);
+  transition: all 1s cubic-bezier(0.84, 0, 0.08, 0.99);
+}
+
+.navigation-item span:hover::before {
+  height: 100%;
+}
+
+.social-media {
+  height: 50px;
+  position: absolute;
+  bottom: 8px !important;
+}
+
 .wrapper {
   // background: url('../assets/unsplash02.jpg') no-repeat 50% 50%;
   // background-size: cover;
@@ -335,95 +405,48 @@ export default {
   // overflow: hidden;
 }
 
-.title {
+.title-field {
   position: absolute;
   top: 0px !important;
   left: 50% !important;
   transform: translateX(-50%);
-  width: 70%;
-  height: 5rem;
+  width: 100%;
+  height: 100px;
   z-index: 1;
   text-align: center;
+  display: block;
+  user-select: none;
+  // border: 2px solid red;
 }
 
-.title:hover {
-  cursor: pointer;
-}
-
-.title h1 {
+.title {
   font-family: 'Monoton' !important;
-  font-size: 2.8rem;
+  font-size: 3.8em;
   letter-spacing: 4px;
   text-transform: uppercase;
   color: black;
-}
-
-.btn-sobre {
-  position: absolute;
-  left: 10px;
-  bottom: 50%;
-  z-index: 1;
-  width: 9rem;
-  height: 3rem;
-  border-radius: 0px;
-  background-color: black;
-  box-shadow: none;
-}
-
-.btn-agenda {
-  position: absolute;
-  left: 10px;
-  bottom: 40%;
-  z-index: 1;
-  width: 9rem;
-  height: 3rem;
-  border-radius: 0px;
-  background-color: #fbec5d;
-  color: black;
-  box-shadow: none;
-}
-
-.btn-login {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  z-index: 1;
-  width: 9rem;
-  height: 3rem;
-  border-radius: 0px;
-  background-color: black;
-  color: black;
-  box-shadow: none;
-  text-align: center;
-}
-
-.text-black {
-  color: black;
-}
-
-.text-white {
-  color: white;
-}
-
-.btn-menu-text {
-  letter-spacing: 6px;
-  padding: 16px;
-  text-align: center;
-  font-family: 'Comic Sans' !important;
-  font-size: 22px;
-}
-
-.link-menu{
-  text-decoration: none !important;
+  position: relative;
 }
 
 .filter {
   display: flex;
   position: absolute;
-  bottom: 24px;
-  right: 24px;
-  z-index: 1;
-  //border: 2px solid red;
+  bottom: 0px;
+  right: 50%;
+  transform: translateX(50%);
+  height: 0px;
+  width: 70%;
+  background-color: black;
+  z-index: 2;
+  overflow: hidden;
+  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  opacity: 0; 
+}
+
+.showFilter {
+  height: 80px;
+  transition: 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  opacity: 1;
 }
 
 .first-context {
@@ -432,12 +455,6 @@ export default {
   justify-content: flex-end;
   align-items: flex start;
   //border: 2px solid green;
-}
-
-.btn-all {
-  position: absolute;
-  right: 5px;
-  bottom: 50px;
 }
 
 .primaryfltr {
@@ -452,35 +469,24 @@ export default {
   max-height: 50px;
 }
 
-.filter-card {
-  background-color: white;
-  // z-index: 1;
-  overflow: hidden;
-  position: absolute;
-  bottom: 0px;
-  right: 50px;
-  max-height: 50px;
-  min-width: 350px;
-}
-
 .btn-filter {
   position: absolute;
-  bottom: 0px;
-  right: 0px;
+  bottom: 32px;
+  right: 32px;
   z-index: 1;
+  box-shadow: none;
+  content: 'Filtro';
 }
 
-.social-media {
-  position: absolute;
-  top: 30px;
-  left: 20px;
-  z-index: 1;
-}
-
-.social-media ul li {
-  list-style: none;
-  display: block;
+.btn-filter:hover::before {
+  content: 'FILTRO';
+  font-family: 'Courier new';
+  font-size: 1.2em;
+  font-weight: 900;
+  letter-spacing: 4px;
+  margin-left: -120px;
   color: black;
-  margin-top: 8px;
+  box-shadow: none;
 }
+
 </style>

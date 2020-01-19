@@ -1,11 +1,7 @@
 <template>
   <div class="content">
-    <q-btn to="/" style="position: absolute; top: 10px; left: 0px; z-index: 1; width: 9rem; height: 3.5rem; border-radius: 0px;
-      background-color: #fbec5d; box-shadow: none;">
-      <div class="row" style="justify-content: center; align-items: center;">
-        <q-icon name="keyboard_arrow_left" class="text-black"></q-icon>
-        <span style="font-size: 15px; font-weight: 800; color: black">Mapa</span>
-      </div> 
+    <q-btn to="/" class="btn-menu" round @click="showNav" size="2em" style="position: absolute; top: 32px; left: 32px; z-index: 1; box-shadow: none;">
+      <q-icon name="keyboard_arrow_left" size="2.5em"></q-icon>
     </q-btn>
     <div class="container-center">
       <div class="card">

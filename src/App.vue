@@ -59,6 +59,14 @@ export default {
   justify-content: space-around;
 }
 // position ----------------------------- position
+.top-8 {
+  top: 8px;
+}
+
+.top-32 {
+  top: 32px;
+}
+
 .top10 {
   position: absolute;
   top: 10%;
@@ -75,6 +83,10 @@ export default {
 }
 
 // margin ------------------------------ margin
+.margin-8 {
+  margin: 8px;
+}
+
 .margin-top8 {
   margin-top: 8px;
 }
@@ -152,5 +164,13 @@ export default {
   transform: scale(1.2);
   transition: all 0.3s ease-in-out;
   background-color: none !important;
+}
+
+.text-black {
+  color: black;
+}
+
+.text-white {
+  color: white;
 }
 </style>

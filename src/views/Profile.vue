@@ -12,7 +12,7 @@
         <div class="perfil">
           <div class="perfil-info">
             <q-avatar size="110px">
-              <img src="../assets/avatar01.jpg">
+              <img src="../assets/statics/avatar01.jpg">
             </q-avatar>
             <div class="perfil-name">{{userName}}</div>
             <div class="perfil-category">{{userCategory}}</div>
@@ -253,7 +253,7 @@ export default {
 .content {
   height: 100vh;
   border-radius: 0px;
-  //background-image: url("../assets/unsplash01.jpg");
+  //background-image: url("../assets/statics/unsplash01.jpg");
   background-color: black;
   display: flex;
   flex-direction: row;

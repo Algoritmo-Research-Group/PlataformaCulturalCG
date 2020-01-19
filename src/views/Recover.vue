@@ -149,7 +149,7 @@ export default {
   width: 100%;
   height: 100vh;
   font-family: 'Poppins';
-  background-image: url(../assets/yellow01.jpg);
+  background-image: url(../assets/statics/yellow01.jpg);
 }
 
 .q-stepper {
