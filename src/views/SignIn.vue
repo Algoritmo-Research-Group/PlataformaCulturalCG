@@ -1,34 +1,41 @@
 <template>
   <div class="content">
-    <q-btn to="/" class="btn-menu" round @click="showNav" size="2em" style="position: absolute; top: 32px; left: 32px; z-index: 1; box-shadow: none;">
-      <q-icon name="keyboard_arrow_left" size="2.5em"></q-icon>
+    <q-btn to="/" class="btn-back" round size="1.5em" style="position: fixed; top: 32px; left: 32px; z-index: 1; box-shadow: none;">
+      <img src="../assets/icons/keyboard_arrow_left_black.png"/>
     </q-btn>
     <div class="container-center">
-      <div class="card">
-        <div class="column">
-          <h2 class="ttl">Seja Bem Vindo!</h2>
-          <q-input outlined v-model="userEmail" :rules="emailRules" label="login"  color="black" required
-            style="font-size: 18px"/>
-          <q-input outlined v-model="userPassword" label="senha" :type="isPwd ? 'password' : 'text'" hint="Mínimo de 8 caracteres" color="black" style="font-size: 18px">
-            <template v-slot:append>
-              <q-icon
-                :name=" isPwd ? 'visibility_off' : 'visibility'"
-                size="20px"
-                class="cursor-pointer"
-                @click="isPwd = !isPwd"
-              />
-            </template>
-          </q-input>
-          <div class="btn-field column">
-            <router-link class="link" to="/Recover">Esqueceu sua conta?</router-link>
-            <router-link class="link" to="/Register">Cadastre-se</router-link>
-            <q-btn color="black" @click="signIn()" text-color="white"
-              style="align-self: center; width: 150px; height: 50px; margin-top: 16px; border-radius: 0px">
-              <span style="font-family: 'Calistoga'; font-weight: 400">LOGAR</span>
-            </q-btn>
-          </div>
-        </div>
+
+      <div class="card column">
+        
+        <h2 class="ttl">Seja Bem Vindo!</h2>
+        <q-input class="input" outlined v-model="userEmail" :rules="emailRules" label="login"  color="black" required/>
+
+        <q-input class="input" outlined v-model="userPassword" label="senha" :type="isPwd ? 'password' : 'text'" hint="Mínimo de 8 caracteres" color="black">
+          <template v-slot:append>
+            <q-icon
+              :name=" isPwd ? 'visibility_off' : 'visibility'"
+              size="18px"
+              class="cursor-pointer"
+              @click="isPwd = !isPwd"
+            />
+          </template>
+        </q-input>
+
+        <div class="btn-field column">
+          <router-link to="/Recover">
+            <span class="link">Esqueceu sua conta?</span>
+          </router-link>
+          <router-link to="/Register">
+            <span class="link">Cadastre-se</span>
+          </router-link>
+
+          <q-btn class="btn-login" color="black" @click="signIn()">
+            <span class="span">LOGAR</span>
+          </q-btn>
+        </div>        
+        
       </div>
+
     </div>
   </div>
 </template>
@@ -115,6 +122,19 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+
+.btn-back:hover::before {
+  content: 'Voltar';
+  font-family: 'Courier new';
+  font-size: 1.2em;
+  font-weight: 900;
+  letter-spacing: 4px;
+  margin-left: 45px;
+  color: black;
+  box-shadow: none;
 }
 
 .content {
@@ -135,32 +155,65 @@ export default {
 .card {
   width: 500px;
   padding: 16px;
-  background-color: white;
+  background-color: yellow;
+  justify-content: center;
+  align-items: center;
 }
 
 .ttl {
   font-size: 55px;
   color: black;
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   font-family: 'Monoton';
   letter-spacing: 2px;
 }
 
+.input {
+  margin: 8px;
+  width: 350px;
+  font-size: 18px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
 .btn-field {
-  margin: 16px;
-  margin-left: 8px;
+  margin-top: 16px;
+  padding: 8px;
 }
 
 .link {
-  text-decoration: none;
-  font-family: 'Calistoga';
-  font-weight: normal;
+  text-decoration: none !important;
+  font-weight: 300;
   font-size: 18px;
   color: black;
+  align-self: center;
 }
 
 .link:hover {
-  color: grey;
+  // color: grey;
+  font-weight: 700;
+  transform: scaleY(1.1);
+  transition: all .2s linear;
+}
+
+.btn-login {
+  align-self: center; 
+  width: 150px; 
+  height: 50px; 
+  margin-top: 16px; 
+  border-radius: 25px; 
+  box-shadow: none
+}
+
+.btn-login:hover {
+  transform: scale(1.05);
+  transition: all .2s linear;
+}
+
+.span {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 400;
+  text-transform: lowercase;
+  font-size: 1.4em;
 }
 </style>

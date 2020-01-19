@@ -87,6 +87,14 @@ export default {
   margin: 8px;
 }
 
+.margin-left8 {
+  margin-left: 8px;
+}
+
+.margin-left16 {
+  margin-left: 16px;
+}
+
 .margin-top8 {
   margin-top: 8px;
 }

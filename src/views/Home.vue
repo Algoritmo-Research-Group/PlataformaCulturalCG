@@ -15,17 +15,17 @@
       <ul class="navigation-list">
         <li class="navigation-item">
           <router-link class="navigation-link a" type="link" to="/about" exact>
-            <span class="text-link" data-text="SOBRE">SOBRE</span>
+            <span class="" data-text="SOBRE">SOBRE</span>
           </router-link>
         </li>
         <li class="navigation-item">
           <router-link class="navigation-link a" ref="link" to="/schedule" exact>
-            <span class="text-link" data-text="AGENDA">AGENDA</span>
+            <span class="" data-text="AGENDA">AGENDA</span>
           </router-link>
         </li>
         <li class="navigation-item">
           <router-link class="navigation-link a" ref="link" to="/signIn" exact>
-            <span class="text-link" data-text="LOGIN">LOGIN</span>
+            <span class="" data-text="LOGIN">LOGIN</span>
           </router-link>
         </li>
       </ul>
@@ -357,7 +357,7 @@ nav{
 }
 
 .a {
-  font-family: 'Monoton', 'Courier New', Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   font-size: 2.2em;
   text-decoration: none;
   color: rgba(255, 255, 255, 0.5);

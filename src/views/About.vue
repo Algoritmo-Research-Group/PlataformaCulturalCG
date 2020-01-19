@@ -2,7 +2,7 @@
   <q-page>
     <div class="body">
       <div class="smooth">
-        <q-btn to="/" class="btn-menu" round size="2em" style="position: fixed; top: 32px; left: 32px; z-index: 1; box-shadow: none;">
+        <q-btn to="/" class="btn-back" round size="2em" style="position: fixed; top: 32px; left: 32px; z-index: 1; box-shadow: none;">
           <q-icon name="keyboard_arrow_left" size="2.5em"></q-icon>
         </q-btn>
         <div class="header">
@@ -15,7 +15,7 @@
         </div>
 
         <section id="plt">
-          <div class="row content-center">
+          <div class="row content">
             <div class="col-l">
               <h2 class="ttlplt">ALGO+RITMO</h2>
               <span class="sttlplt">Grupo de Pesquisa</span>
@@ -110,19 +110,11 @@
         </section>
 
         <section id="faq" class="justify-center">
-          <!-- <h2 class="ttlfq">FAQ</h2> -->
-          <div class="top10">
-            <q-avatar class="imgfq" size="120px">
-              <img src="../assets/statics/avatar01.jpg">
-            </q-avatar>
-            <h3 class="margin-top16 ttlfq">Como Podemos te Ajudar?</h3>
-            <q-input class="margin-top16" rounded outlined v-model="inputFaq" color="white" style="min-width: 550px; font-size: 22px;">
-              <template v-slot:append>
-                <q-icon name="search" />
-              </template>
-            </q-input>
-            <div class="margin-top32" style="max-width: 600px ">
-              <q-list bordered class="rounded-borders">
+          <div class="content-center column">
+
+            <span class="ttlfq">Ainda tem Dúvidas?</span>
+            <div class="expansion-item" >
+              <q-list bordered class="rounded-borders" style="border-color: white;">
                 <q-expansion-item
                   expand-separator
                   icon=""
@@ -135,7 +127,7 @@
                     </q-item-section>
                   </template>
                   <q-card>
-                    <q-card-section>
+                    <q-card-section class="bg-answer">
                       <p class="p-answer">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
                         commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
@@ -156,7 +148,7 @@
                     </q-item-section>
                   </template>
                   <q-card>
-                    <q-card-section>
+                    <q-card-section class="bg-answer">
                       <p class="p-answer">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
                         commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
@@ -177,7 +169,7 @@
                     </q-item-section>
                   </template>
                   <q-card>
-                    <q-card-section>
+                    <q-card-section class="bg-answer">
                       <p class="p-answer">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
                         commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
@@ -188,22 +180,52 @@
                 </q-expansion-item>
               </q-list>
             </div>
+
           </div>
         </section>
 
         <section id="algo" class="justify-center">
-          <div class="top10">
-            <h2 class="ttlctt">Contate-nos</h2>
-          </div>
-          <div class="row social-media">
-              <q-btn flat round type="a" target="_blank" size="1.1em" href="https://www.facebook.com/AlgoRitmo.ufms/">
-                <q-icon size="1.3em" name="fab fa-facebook-square" color="white"></q-icon>
-              </q-btn>
-              <q-btn flat round  type="a" target="_blank" size="1.1em" href="https://www.instagram.com/algo.ritmo_/">
-                <q-icon size="1.3em" name="fab fa-instagram" color="white"></q-icon>
-              </q-btn>
+
+          <div class="row content">
+            <div class="col-l">
+
+              <div class="column">
+
+                <h2 class="ttlctt">Contate-nos</h2>
+                <p class="sbttlctt">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, ipsam exercitationem nulla maiores <br>
+                  rerum quia error sunt officia a ullam vero neque? A nesciunt voluptate perspiciatis itaque adipisci! Quisquam, et.
+                </p>
+                
+                <div class="social-media">
+          
+                  <div class="column">
+                    <div class="row email">
+                      <q-icon name="far fa-envelope" size="1.5em" style="margin-right: 16px;"></q-icon>
+                      <span class="email">Algoritmo.ufms@gmail.com</span>
+                    </div>
+                    <q-btn class="fb-btn" flat round type="a" target="_blank" size="1.1em" href="https://www.facebook.com/AlgoRitmo.ufms/">
+                      <q-icon size="1.3em" name="fab fa-facebook-square" color="white"></q-icon>
+                    </q-btn>
+                    <q-btn class="ig-btn" flat round  type="a" target="_blank" size="1.1em" href="https://www.instagram.com/algo.ritmo_/">
+                      <q-icon size="1.3em" name="fab fa-instagram" color="white"></q-icon>
+                    </q-btn>
+                  </div>
+                </div>
+
+              </div>
+
             </div>
+
+            <div class="col-r">
+              <span>alo</span>
+              <!-- todo here -->
+            </div>
+
+          </div>
+
         </section>
+
       </div>
     </div>
   </q-page>
@@ -289,7 +311,7 @@ export default {
   scroll-snap-type: y mandatory;
 }
 
-.btn-menu:hover::before {
+.btn-back:hover::before {
   content: 'Voltar';
   font-family: 'Courier new';
   font-size: 1.2em;
@@ -350,8 +372,6 @@ export default {
 }
 // fim de header ul
 
-
-
 section {
   position: relative;
   display: flex;
@@ -367,7 +387,7 @@ section {
   scroll-snap-align: none;
 }
 
-.content-center {
+.content {
   width: 100%;
   height: 90%;
   position: absolute;
@@ -376,36 +396,47 @@ section {
 }
 
 .col-l {
-  width: 60%;
-  height: 100%;
-  // border: 2px solid yellow;
   position: relative;
-  padding-left: 64px;
+  flex-basis: 60%;
+  height: 100%;
+  padding: 32px;
+  //border: 2px solid orange;
+
+  .ttlplt, .sttlplt, .text-area {
+    margin-left: 32px;
+  }
 
   .ttlplt {
-    margin-top: 52px;
+    position: relative;
+    margin-top: 20px;
     padding: 0;
     font-family: 'Monoton';
     font-weight: normal;
   }
 
   .sttlplt {
+    position: relative;
     margin-top: 10px;
     font-family: 'Courier New', Courier, monospace;
   }
 
   .text-area {
+    position: relative;
     margin-top: 24px;
     height: 360px;
     width: 95%;
+  }
+  .pplt {
+    font-family: Courier, monospace;
   }
 }
 
 
 .col-r {
   position: relative;
-  width: 40%;
+  flex-basis: 40%;
   height: 100%;
+  padding: 32px;
   // border: 2px solid red;
 
   .carousel-plt {
@@ -415,14 +446,14 @@ section {
     position: absolute;
     left: 32px;
     top: 50px;
-    border: 2px solid white;
+    //border: 2px solid white;
     overflow-x: hidden !important;
     transition: .5 cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
   .img-carousel {
-    max-height: 300px;
-    max-width: 450px;
+    height: 300px;
+    width: 450px;
     overflow: hidden;
   }
 }
@@ -441,21 +472,17 @@ section h2 {
   user-select: none;
 }
 
+// --------------------------section2-------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>
+section:nth-child(2) {
+  background-color: #1d1e22;
+}
+
 .ttlfrm {
   position: absolute;
   top: 120px;
   left: 10%;
   padding: 0;
   font-family: 'Monoton';
-  font-weight: normal;
-}
-
-.ttlfq, .ttlctt {
-  position: absolute;
-  top: 120px;
-  left: 10%;
-  padding: 0;
-  font-family: 'Courier New', Courier, monospace;
   font-weight: normal;
 }
 
@@ -466,18 +493,11 @@ section h2 {
   font-family: 'Courier New', Courier, monospace;
 }
 
-// plt -> plataforma, frm -> forum
-.pplt, .pfrm {
-  font-family: 'Courier New', Courier, monospace;
-}
-
-.ttl-answer {
-  font-size: 20px;
-}
-
-.p-answer {
-  color: black;
-  font-size: 18px;
+.pfrm {
+  position: absolute;
+  top: 220px;
+  max-width: 700px;
+  left: 10%;
 }
 
 .img1 {
@@ -487,6 +507,12 @@ section h2 {
   right: 6.25rem;
 }
 
+.img1:hover {
+  transform: scale(1.1);
+  z-index: 1;
+  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
 .img2 {
   max-width: 20rem;
   position: absolute;
@@ -494,20 +520,60 @@ section h2 {
   right: 9.375rem;
 }
 
-.imgfq {
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+.img2:hover {
+  // transform: scale(1.1);
+  // transition: 1s ease-in-out;
+  animation-name: new;
+  animation-duration: 1s;
 }
 
-section:nth-child(2) {
-  background-color: #1d1e22;
-  // background-color: url('../assets/statics/road.jpg');
-}
 
+//-------------------------------section3---------------------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 section:nth-child(3) {
   background-color: #1d1e22;
   // background-image: url('../assets/statics/mountain.jpg');
+}
+
+.content-center {
+  width: 100%;
+  height: 90vh;
+  position: relative;
+  top: 10%;
+  padding: 32px;
+//border: 2px solid green;
+  overflow: hidden;
+}
+
+.ttlfq {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: normal;
+  font-size: 2em;
+}
+
+.expansion-item {
+  margin-top: 32px;
+  width: 600px;
+}
+
+.ttl-answer {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+}
+
+.p-answer {
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+  font-size: 18px;
+}
+
+.bg-answer {
+  background-color: #1d1e22;
+  padding: 16px;
+  transition: 3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.imgfq {
+  //margin-left: 20%;
 }
 
 section:nth-child(4) {
@@ -515,16 +581,100 @@ section:nth-child(4) {
   // background-image: url('../assets/statics/unsplash01.jpg');
 }
 
-@keyframes new {
-  0% { transform:scaleX(1) }
-  50% { transform:scaleX(.95) }
-  100% { transform:scaleX(1) }
+.ttlctt {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: normal;
+  text-transform: lowercase;
+}
+
+.sbttlctt {
+  max-width: 600px;
+  margin-top: 32px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .social-media {
+  align-items: center;
+  margin-left: 16px;
+  margin-top: 32px;
+}
+
+.social-media-item {
+  margin-left: 16px;
+}
+
+.animate-item:hover {
+  animation-name: bounced;
+  animation-duration: 1s;
+}
+
+.email {
+  position: relative;
+  margin-left: 16px;
+  margin-bottom: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+}
+
+// .email:after {
+//   position: absolute;
+//   bottom: -3px;
+//   left: 0px;
+//   content: '';
+//   max-width: 260px;
+//   height: 2px;
+//   transition: all 0,5s linear;
+// }
+
+.email:hover {
+  cursor: pointer;
+}
+
+.fb-btn {
+  position: relative;
+}
+
+.fb-btn::after {
+  content: '@AlgoRitmo.ufms';
   position: absolute;
-  bottom: 32px;
-  right: 32px;
+  bottom: 12px;
+  left: 64px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+  text-transform: lowercase;
+  transition: all .2s linear;
+}
+
+.ig-btn {
+  position: relative;
+}
+
+.ig-btn::after {
+  content: '@algo.ritmo_';
+  position: absolute;
+  bottom: 12px;
+  left: 64px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+  text-transform: lowercase;
+  transition: all .2s linear;
+  animation: none;
+}
+
+@keyframes new {
+  0% { transform:scaleX(1) }
+  25% { transform:scale(.95)}
+  50% { transform:scaleX(1) }
+  75% { transform:scale(.85) }
+  100% { transform:scaleX(1) }
+}
+
+@keyframes bounced {
+  0% { transform:scaleX(1) }
+  25% { transform:scale(.85)}
+  50% { transform:scaleX(.95) }
+  75% { transform:scale(.85) }
+  100% { transform:scaleX(1) }
 }
 
 </style>
