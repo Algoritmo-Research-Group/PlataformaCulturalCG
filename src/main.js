@@ -36,9 +36,8 @@ AmplifyEventBus.$on('authState', info => {
   console.log(`Here is the auth event that was just emitted by an Amplify component: ${info}`)
 });
 
-import Map from './components/Map.vue';
-import M from './components/MTeste.vue';
-Vue.component('m-test', M);
+import CardLogo from './components/CardLogo.vue';
+Vue.component('card-logo', CardLogo);
 
 Vue.use(AmplifyPlugin, AmplifyModules);
 Vue.component('map-import', Map);
